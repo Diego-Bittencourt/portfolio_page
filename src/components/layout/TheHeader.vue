@@ -16,7 +16,7 @@ export default {};
 header {
   display: flex;
   height: 10vw;
-  background-color: #2b2b2d;
+  background-color: #2b2b3d;
 }
 
 ul {
