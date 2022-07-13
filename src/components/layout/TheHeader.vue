@@ -13,6 +13,16 @@ export default {};
 </script>
 
 <style scoped>
+header {
+  display: flex;
+  height: 10vw;
+  background-color: #2b2b2b;
+}
+
+ul {
+  display: flex;
+}
+
 li {
     list-style: none;
 }
