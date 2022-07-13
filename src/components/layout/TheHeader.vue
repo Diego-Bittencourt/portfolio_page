@@ -15,8 +15,12 @@ export default {};
 <style scoped>
 header {
   display: flex;
-  height: 10vw;
-  background-color: #2b2b3d;
+  justify-content: space-between;
+  align-content: stretch;
+  height: 7vw;
+  background-color: #3a3a3a;
+  font-size: inherit;
+  color: #d6d6d6;
 }
 
 ul {
