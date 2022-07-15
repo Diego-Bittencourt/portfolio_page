@@ -1,5 +1,13 @@
 <template>
+<div class="pagewrapper"></div>
   <the-header></the-header>
+  teste de card falso
+  <div class="red" @click="setColor('red')">Vermelho</div>
+  <div class="blue" @click="setColor('blue')">Azul</div>
+  <div class="green" @click="setColor('green')">Verde</div>
+  <base-card :color="themeColor">Teste de card vermelho</base-card>
+  <base-card :color="themeColor">Teste de card azul</base-card>
+  <base-card :color="themeColor">Teste de card green</base-card>
 </template>
 
 
@@ -9,6 +17,16 @@ export default {
   components: {
     TheHeader
   },
+  data() {
+    return {
+      themeColor: "green"
+    }
+  },
+  methods: {
+    setColor(color) {
+      this.themeColor = color;
+    }
+  }
 
   
 }
@@ -31,5 +49,12 @@ html {
 
 body {
   font-size: 1.6rem;
+}
+
+.red,
+.blue,
+.green {
+  height: 30px;
+  width: 30px;
 }
 </style>

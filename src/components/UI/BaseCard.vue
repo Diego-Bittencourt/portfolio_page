@@ -1,0 +1,41 @@
+<template>
+    <div class="card" :class="color">
+        <slot></slot>
+    </div>
+</template>
+
+<script>
+
+export default {
+    props: ['color'],
+    // data() {
+    //     return {
+    //         maincolor: this.color
+    //     }
+    // }
+}
+
+</script>
+
+
+<style scoped>
+.card {
+    width: 90%;
+    box-shadow: 0 0 10px rgb(139, 139, 139);
+    padding: 1rem;
+    margin: 2rem auto;
+    max-width: 35rem;
+}
+
+.blue:hover {
+    box-shadow: 0 8px 10px blue;
+}
+
+.red:hover {
+    box-shadow: 0 8px 10px red;
+}
+
+.green:hover {
+    box-shadow: 0 8px 10px green;
+}
+</style>
