@@ -1,7 +1,8 @@
 <template>
+<the-header></the-header>
 <div class="pagewrapper"></div>
-  <the-header></the-header>
-  teste de card falso
+  
+ 
   <div class="red" @click="setColor('red')">Vermelho</div>
   <div class="blue" @click="setColor('blue')">Azul</div>
   <div class="green" @click="setColor('green')">Verde</div>
@@ -10,7 +11,9 @@
   <base-card :color="themeColor">Teste de card green</base-card>
 </template>
 
-
+<!-- // npm i --save @fortawesome/fontawesome-svg-core -->
+<!-- npm i --save @fortawesome/free-solid-svg-icons -->
+<!-- npm i --save @fortawesome/vue-fontawesome -->
 <script>
 import TheHeader from './components/layout/TheHeader.vue';
 export default {

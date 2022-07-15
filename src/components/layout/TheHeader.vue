@@ -1,6 +1,7 @@
 <template>
   <header>
     <nav>
+      <i class="fa-solid fa-code"></i>
       <h1>Diego Bittencourt Mendes</h1>
       
       <ul>
