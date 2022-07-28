@@ -2,12 +2,12 @@
   <header>
     <nav>
       <h1>Diego Bittencourt Mendes</h1>
+
       <div class="btnwrapper">
-      <div class="redselector colorbtn" @click="setColor('red')"></div>
-      <div class="blueselector colorbtn" @click="setColor('blue')"></div>
-      <div class="greenselector colorbtn" @click="setColor('green')"></div>
+        <div class="redselector colorbtn" @click="setColor('red')"></div>
+        <div class="blueselector colorbtn" @click="setColor('blue')"></div>
+        <div class="greenselector colorbtn" @click="setColor('green')"></div>
       </div>
-      
 
       <ul>
         <base-button link to="/projects" :color="themeColor"
@@ -25,15 +25,15 @@
 export default {
   data() {
     return {
-      themeColor: ''
-    }
+      themeColor: "",
+    };
   },
   methods: {
     setColor(color) {
       this.$emit("set-color", color);
       this.themeColor = color;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -51,7 +51,7 @@ header {
 
 header nav {
   width: 90%;
-  height: 100%;
+  height: 70%;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -100,12 +100,12 @@ h1 {
 
 .greenselector {
   background-color: #4d9c5b;
-  border: 2px solid #d6d6d6
+  border: 2px solid #d6d6d6;
 }
 
 .redselector {
   background-color: rgb(190, 60, 60);
-  border: 2px solid #d6d6d6
+  border: 2px solid #d6d6d6;
 }
 
 .blueselector:hover {

@@ -1,10 +1,13 @@
 <template>
-  <button v-if="!link" :class="color">
+  <button v-if="button" :class="color">
     <slot></slot>
   </button>
-  <router-link v-else :to="to" :class="color">
+  <router-link v-if="link" :to="to" :class="color">
     <slot></slot>
   </router-link>
+  <a v-if="outlink" :href="receivedlink" target="_blank">
+    <slot></slot>
+    </a>
 </template>
 
 <script>
@@ -30,6 +33,10 @@ export default {
       required: false,
       default: "/",
     },
+    receivedlink: {
+      type: String,
+      required: false,
+    }
   },
 };
 </script>
