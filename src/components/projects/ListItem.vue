@@ -44,7 +44,7 @@ p {
     border-radius: 10px;
 }
 
-.linkswrapper:hover {
+li:hover .linkswrapper {
     height: 100%;
     transition: 1s;
 }
