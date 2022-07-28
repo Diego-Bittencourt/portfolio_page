@@ -41,6 +41,9 @@ a {
   font: inherit;
   cursor: pointer;
   text-align: center;
-  border: 1px solid purple;
+  color: #333366;
+  background-color: #dddddd;
 }
+
+
 </style>
