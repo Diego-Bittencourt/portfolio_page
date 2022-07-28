@@ -1,16 +1,9 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router/index';
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router/index.js';
 
 import BaseButton from './components/UI/BaseButton.vue';
 import BaseCard from './components/UI/BaseCard.vue';
-
-import { library } from '@fortawesome/fontawesome-svg-core'
-
-import { faHatWizard } from '@fortawesome/free-solid-svg-icons'
-
-library.add(faHatWizard)
-// app.component('font-awesome-icon', FontAwesomeIcon)
 
 const app = createApp(App);
 

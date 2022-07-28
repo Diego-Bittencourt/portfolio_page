@@ -6,7 +6,7 @@
       
       <ul>
         <base-button to="/projects"><li><h1>Projects</h1></li></base-button>
-        <base-button><li><h1>Contact</h1></li></base-button>
+        <base-button to="/contact"><li><h1>Contact</h1></li></base-button>
       </ul>
     </nav>
   </header>

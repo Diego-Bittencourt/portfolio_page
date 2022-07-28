@@ -9,6 +9,8 @@
   <base-card :color="themeColor">Teste de card vermelho</base-card>
   <base-card :color="themeColor">Teste de card azul</base-card>
   <base-card :color="themeColor">Teste de card green</base-card>
+  
+  <router-view></router-view>
 </template>
 
 <!-- // npm i --save @fortawesome/fontawesome-svg-core -->

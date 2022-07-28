@@ -1,0 +1,3 @@
+<template>
+    Front Painel
+</template>
