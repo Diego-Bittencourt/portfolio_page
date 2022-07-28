@@ -1,16 +1,11 @@
 <template>
-<the-header></the-header>
+<the-header @set-color="setColor"></the-header>
 <div class="pagewrapper"></div>
   
  
-  <div class="red" @click="setColor('red')">Vermelho</div>
-  <div class="blue" @click="setColor('blue')">Azul</div>
-  <div class="green" @click="setColor('green')">Verde</div>
-  <base-card :color="themeColor">Teste de card vermelho</base-card>
-  <base-card :color="themeColor">Teste de card azul</base-card>
-  <base-card :color="themeColor">Teste de card green</base-card>
   
-  <router-view></router-view>
+  
+  <router-view :color="themeColor"></router-view>
 </template>
 
 <!-- // npm i --save @fortawesome/fontawesome-svg-core -->
@@ -56,10 +51,4 @@ body {
   font-size: 1.6rem;
 }
 
-.red,
-.blue,
-.green {
-  height: 30px;
-  width: 30px;
-}
 </style>

@@ -25,6 +25,7 @@ export default {
     padding: 1rem;
     margin: 2rem auto;
     max-width: 35rem;
+    transition: 0.3s;
 }
 
 .blue:hover {
