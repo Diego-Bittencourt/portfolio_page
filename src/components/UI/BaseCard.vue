@@ -5,14 +5,14 @@
 </template>
 
 <script>
-
 export default {
-    props: ['color'],
-    // data() {
-    //     return {
-    //         maincolor: this.color
-    //     }
-    // }
+    inject: ['color'],
+    data () {
+        return {
+            color: this.color
+        }
+    }
+    
 }
 
 </script>

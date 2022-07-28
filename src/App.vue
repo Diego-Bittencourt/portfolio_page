@@ -13,13 +13,20 @@
 <!-- npm i --save @fortawesome/vue-fontawesome -->
 <script>
 import TheHeader from './components/layout/TheHeader.vue';
+import { computed } from 'vue';
+
 export default {
   components: {
     TheHeader
   },
-  data() {
+  data () {
     return {
       themeColor: "green"
+    }
+  },
+  provide () {
+    return {
+      color: computed(() => this.themeColor)
     }
   },
   methods: {
