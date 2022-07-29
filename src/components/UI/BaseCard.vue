@@ -24,6 +24,7 @@ export default {
     box-shadow: 0 0 10px rgb(139, 139, 139);
     margin: 2rem auto;
     max-width: 35rem;
+    max-height: 35rem;
     transition: 0.3s;
     border-radius: 10px;
 }

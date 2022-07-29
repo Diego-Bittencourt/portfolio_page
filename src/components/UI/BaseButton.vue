@@ -7,7 +7,7 @@
   </router-link>
   <a v-if="outlink" :href="receivedlink" target="_blank">
     <slot></slot>
-    </a>
+  </a>
 </template>
 
 <script>

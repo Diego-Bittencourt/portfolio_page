@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import ListItem from '../components/projects/ListItem.vue';
+import ListItem from "../components/projects/ListItem.vue";
 export default {
   components: {
-    ListItem
+    ListItem,
   },
   data() {
     return {
@@ -38,4 +38,16 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+ul {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2.5rem;
+  padding: 2rem;
+  border: 1px solid red;
+}
+</style>

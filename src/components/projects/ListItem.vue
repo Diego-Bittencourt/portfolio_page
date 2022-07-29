@@ -21,7 +21,10 @@ export default {
 li {
     list-style: none;
     padding: 2rem;
+    width: 100%;
+    height: 20rem;
     position: relative;
+    margin: 0;
 }
 
 h3 {
@@ -42,10 +45,17 @@ p {
     top: 0;
     left: 0;
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
+
 
 li:hover .linkswrapper {
     height: 100%;
     transition: 1s;
 }
+
+
 </style>
