@@ -13,10 +13,10 @@ import  { FontAwesomeIcon }  from '@fortawesome/vue-fontawesome'
 
 // /* import specific icons */
 import  { faCode, faGlobe }  from '@fortawesome/free-solid-svg-icons'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faGithub, faLinkedin, faHtml5, faCss3Alt, faJsSquare, faVuejs } from '@fortawesome/free-brands-svg-icons'
 
 // /* add icons to the library */
-library.add(faCode, faGithub, faGlobe)
+library.add(faCode, faGithub, faGlobe, faLinkedin, faHtml5, faCss3Alt, faJsSquare, faVuejs)
 
 
 

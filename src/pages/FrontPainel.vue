@@ -6,9 +6,10 @@
       <p>I'm a Front-end Software Developer based in Japan with strong UI/UX skills</p>
       <p>Skills</p>
       <ul>
-        <li>HTML/CSS</li>
-        <li>Javascipt</li>
-        <li>Vue.js</li>
+        <li><font-awesome-icon icon="fa-brands fa-html5" /></li>
+        <li><font-awesome-icon icon="fa-brands fa-css3-alt" /></li>
+        <li><font-awesome-icon icon="fa-brands fa-square-js" /></li>
+        <li><font-awesome-icon icon="fa-brands fa-vuejs" /></li>
         </ul>
     </div>
     
