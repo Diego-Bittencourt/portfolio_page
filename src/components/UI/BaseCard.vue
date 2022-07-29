@@ -27,6 +27,7 @@ export default {
     max-height: 35rem;
     transition: 0.3s;
     border-radius: 10px;
+    cursor: default;
 }
 
 .blue:hover {

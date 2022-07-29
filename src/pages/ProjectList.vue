@@ -48,6 +48,6 @@ ul {
   align-items: stretch;
   gap: 2.5rem;
   padding: 2rem;
-  border: 1px solid red;
+  margin: 0 auto;
 }
 </style>
