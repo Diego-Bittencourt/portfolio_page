@@ -1,11 +1,7 @@
 <template>
 <the-header @set-color="setColor"></the-header>
 <div class="pagewrapper"></div>
-  
- 
-  
-  
-  <router-view :color="themeColor"></router-view>
+  <router-view></router-view>
 </template>
 
 <!-- // npm i --save @fortawesome/fontawesome-svg-core -->
@@ -31,7 +27,11 @@ export default {
   },
   methods: {
     setColor(color) {
+      if (color) {
       this.themeColor = color;
+      } else {
+        this.themeColor = "green";
+      }
     }
   }
 

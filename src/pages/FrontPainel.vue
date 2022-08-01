@@ -21,7 +21,12 @@
 
 <script>
 export default {
-  props: ['color']
+  inject: ['color'],
+  data() {
+    return {
+      color: this.color
+    }
+  }
 }
 </script>
 

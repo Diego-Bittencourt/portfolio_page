@@ -1,18 +1,16 @@
 <template>
   <header>
     <nav>
-      <h1><font-awesome-icon icon="fa-solid fa-code" />Diego Bittencourt Mendes</h1>
+      <base-button link to="/"><font-awesome-icon icon="fa-solid fa-code" /></base-button><h1>Diego Bittencourt Mendes</h1>
       <div class="btnwrapper">
         <div class="redselector colorbtn" @click="setColor('red')"></div>
         <div class="blueselector colorbtn" @click="setColor('blue')"></div>
         <div class="greenselector colorbtn" @click="setColor('green')"></div>
       </div>
       <ul>
-        <base-button link to="/projects" :color="themeColor"
-          ><li><h1>Projects</h1></li></base-button
+        <base-button link to="/projects"><li><h1>Projects</h1></li></base-button
         >
-        <base-button link to="/contact" :color="themeColor"
-          ><li><h1>Contact</h1></li></base-button
+        <base-button link to="/contact"><li><h1>Contact</h1></li></base-button
         >
       </ul>
     </nav>
@@ -36,10 +34,6 @@ export default {
 </script>
 
 <style scoped>
-i {
-  color: white;
-  font-size: 1.6rem;
-}
 header {
   display: flex;
   justify-content: center;

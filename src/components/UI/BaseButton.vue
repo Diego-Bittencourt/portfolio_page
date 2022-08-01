@@ -12,12 +12,13 @@
 
 <script>
 export default {
+  inject: ['color'],
+  data() {
+    return {
+      color: this.color
+    }
+  },
   props: {
-    color: {
-      type: String,
-      required: false,
-      default: null,
-    },
     link: {
       type: Boolean,
       required: false,
@@ -52,6 +53,9 @@ button {
   background-color: #dddddd;
   border-radius: 5px;
   border: 2px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 button:hover,
@@ -63,23 +67,23 @@ a:hover {
 }
 
 .green:active {
-  transform: scale(0.8);
-  transition: 0.2s;
+  transform: scale(0.9);
+  transition: 0.1s;
   color: #67b658;
   border-color: #67b658;
   
 }
 
 .red:active {
-  transform: scale(0.8);
-  transition: 0.2s;
+  transform: scale(0.9);
+  transition: 0.1s;
   color: rgb(190, 60, 60);
   border-color: rgb(190, 60, 60);
 }
 
 .blue:active {
-  transform: scale(0.8);
-  transition: 0.2s;
+  transform: scale(0.9);
+  transition: 0.1s;
   color: rgb(36, 36, 179);
   border-color: rgb(36, 36, 179);
 }
