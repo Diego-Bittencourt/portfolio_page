@@ -40,8 +40,6 @@ export default {
 
 <style scoped>
 ul {
-  width: 90%;
-  max-width: 1200px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

@@ -32,9 +32,6 @@ export default {
 
 <style scoped>
 section {
-  width: 90%;
-  max-width: 1000px;
-  /* height: 80vh; */
   margin: 0 auto;
   display: flex;
   align-items: center;

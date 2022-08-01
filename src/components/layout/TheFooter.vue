@@ -30,7 +30,7 @@ footer {
     width: 100%;
     height: 10vh;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 0 3rem;
     background-color: #494848;
     border-top: 5px solid #7e7d7d;
