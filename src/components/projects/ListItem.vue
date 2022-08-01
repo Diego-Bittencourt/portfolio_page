@@ -29,9 +29,9 @@ li {
     margin: 0;
 }
 
-h2 {
+/* h2 {
   padding: 1rem;
-}
+} */
 
 h3 {
     text-align: center;

@@ -1,7 +1,10 @@
 <template>
   <header>
     <nav>
-      <base-button link to="/"><font-awesome-icon icon="fa-solid fa-code" /></base-button><h1>Diego Bittencourt Mendes</h1>
+      <div class="topwrapper">
+      <base-button link to="/"><font-awesome-icon icon="fa-solid fa-code" /></base-button>
+      <h1>Diego Bittencourt Mendes</h1>
+      </div>
       <div class="btnwrapper">
         <div class="redselector colorbtn" @click="setColor('red')"></div>
         <div class="blueselector colorbtn" @click="setColor('blue')"></div>
@@ -67,12 +70,20 @@ li {
   list-style: none;
   margin: 0 0.5rem;
   margin: auto;
-  padding: 0.75rem 1.5rem;
 }
 
 h1 {
   margin: auto 0;
 }
+
+.topwrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  gap: 10px;
+}
+
 
 .colorbtn {
   width: 20px;
