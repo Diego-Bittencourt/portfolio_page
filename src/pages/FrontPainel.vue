@@ -34,7 +34,7 @@ export default {
 section {
   width: 90%;
   max-width: 1000px;
-  height: 90vh;
+  /* height: 80vh; */
   margin: 0 auto;
   display: flex;
   align-items: center;

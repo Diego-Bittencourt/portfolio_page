@@ -1,7 +1,9 @@
 <template>
-<the-header @set-color="setColor"></the-header>
-<div class="pagewrapper"></div>
-  <router-view></router-view>
+  <the-header @set-color="setColor"></the-header>
+  <section>
+    <router-view></router-view>
+  </section>
+  <the-footer></the-footer>
 </template>
 
 <!-- // npm i --save @fortawesome/fontawesome-svg-core -->
@@ -9,11 +11,13 @@
 <!-- npm i --save @fortawesome/vue-fontawesome -->
 <script>
 import TheHeader from './components/layout/TheHeader.vue';
+import TheFooter from './components/layout/TheFooter.vue';
 import { computed } from 'vue';
 
 export default {
   components: {
-    TheHeader
+    TheHeader,
+    TheFooter
   },
   data () {
     return {
@@ -56,6 +60,10 @@ html {
 
 body {
   font-size: 1.6rem;
+}
+
+section {
+  min-height: 80vh;
 }
 
 </style>
