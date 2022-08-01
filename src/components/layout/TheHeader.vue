@@ -138,32 +138,36 @@ h1 {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  gap: 10px;
 }
 
 .blueselector {
   background-color: rgb(36, 36, 179);
   border: 2px solid #d6d6d6;
+  transition: 0.5s;
 }
 
 .greenselector {
   background-color: #4d9c5b;
   border: 2px solid #d6d6d6;
+  transition: 0.5s;
 }
 
 .redselector {
   background-color: rgb(190, 60, 60);
   border: 2px solid #d6d6d6;
+  transition: 0.5s;
 }
 
 .blueselector:hover {
-  box-shadow: 0 0 5px 5px rgba(137, 43, 226, 0.61);
+  box-shadow: 0 0 10px 10px rgba(137, 43, 226, 0.61);
 }
 
 .greenselector:hover {
-  box-shadow: 0 0 5px 5px rgba(0, 221, 0, 0.63);
+  box-shadow: 0 0 10px 10px rgba(0, 221, 0, 0.63);
 }
 
 .redselector:hover {
-  box-shadow: 0 0 5px 5px rgba(223, 61, 61, 0.603);
+  box-shadow: 0 0 10px 10px rgba(223, 61, 61, 0.603);
 }
 </style>

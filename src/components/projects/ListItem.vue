@@ -56,12 +56,12 @@ p {
     align-items: center;
     overflow: hidden;
     gap: 20px;
+    transition: 1s;
 }
 
 
 li:hover .linkswrapper {
     height: 100%;
-    transition: 1s;
 }
 
 
