@@ -70,7 +70,7 @@ a:hover {
 .green:active {
   transform: scale(0.9);
   transition: 0.1s;
-  color: #67b658;
+  background-color: #67b658;
   border-color: #67b658;
   
 }
@@ -78,14 +78,14 @@ a:hover {
 .red:active {
   transform: scale(0.9);
   transition: 0.1s;
-  color: rgb(190, 60, 60);
+  background-color: rgb(190, 60, 60);
   border-color: rgb(190, 60, 60);
 }
 
 .blue:active {
   transform: scale(0.9);
   transition: 0.1s;
-  color: rgb(36, 36, 179);
+  background-color: rgb(36, 36, 179);
   border-color: rgb(36, 36, 179);
 }
 
