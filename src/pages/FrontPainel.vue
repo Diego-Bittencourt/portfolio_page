@@ -7,7 +7,7 @@
       </p>
     </div>
     <div class="animation frontcard">
-      <p>Skills</p>
+      <h2>Skills</h2>
       <ul>
         <li :class="color">
           <h5 class="skilltext">HTML5</h5>
@@ -56,6 +56,11 @@ ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 h5 {

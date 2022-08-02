@@ -81,9 +81,9 @@ export default {
 
 <style scoped>
 form {
-    margin: 0 2rem;
-    padding: 1rem 1rem 2rem 1rem;
-    height: 65vh;
+    margin: 2rem;
+    padding: 1rem;
+    height: 60vh;
 }
 
 h1 {
