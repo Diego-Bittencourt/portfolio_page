@@ -4,29 +4,76 @@
       <h1>Send me a message:</h1>
       <div class="formcontrol">
         <label ref="name">Your name:</label>
-        <input type="text" id="name" />
-        <p class="errors">Please, insert your name or nickname.</p>
+        <input type="text" id="name" v-model.trim="userName" @input="validateName" />
+        <p class="errors" v-if="isNameInvalid">Please, insert your name or nickname.</p>
       </div>
       <div class="formcontrol">
         <label ref="email">Your email:</label>
-        <input type="email" id="email" />
-        <p class="errors">Please, insert a valid email adress.</p>
+        <input type="email" id="email" v-model="userEmail" @input="validateEmail" />
+        <p class="errors" v-if="isEmailInvalid">Please, insert a valid email adress.</p>
       </div>
       <div class="formcontrol">
         <label ref="message">Your message:</label>
-        <textarea id="message" rows="5"></textarea>
-        <p class="errors">Please, write me a message</p>
+        <textarea id="message" rows="4" v-model.trim="userMessage" @input="validateMessage"></textarea>
+        <p class="errors" v-if="isMessageInvalid">Please, write me a message</p>
       </div>
       <base-button button><h4>Send Message</h4></base-button>
+      <p class="errors" v-if="isFormInvalid">Something went wrong. Please, try again.</p>
     </form>
   </base-card>
 </template>
 
 <script>
 export default {
+    data () {
+        return {
+            isFormInvalid: false,
+            isNameInvalid: false,
+            isEmailInvalid: false,
+            isMessageInvalid: false,
+            userName: "",
+            userEmail: "",
+            userMessage: ""
+        }
+    },
   methods: {
+    validateName () {
+        this.isNameInvalid = false;
+    },
+    validateEmail () {
+        this.isEmailInvalid = false;
+    },
+    validateMessage () {
+        this.isMessageInvalid = false;
+    },
     sendMessage() {
-      //send message
+        this.isFormInvalid = false;
+        if (this.userName === "") {
+            this.isNameInvalid = true;
+            this.isFormInvalid = true;
+        }
+
+        if (this.userEmail === "" || !this.userEmail.includes("@")) {
+            this.isEmailInvalid = true;
+            this.isFormInvalid = true;
+        }
+
+        if (this.userMessage === "") {
+            this.isMessageInvalid = true;
+            this.isFormInvalid = true;
+        }
+
+        if (this.isFormInvalid) {
+            return
+        }
+
+        const userData = {
+            userName: this.userName,
+            userEmail: this.userEmail,
+            userMessage: this.userMessage
+        }
+
+        console.log(userData)
     },
   },
 };
@@ -35,7 +82,7 @@ export default {
 <style scoped>
 form {
     margin: 0 2rem;
-    padding: 1rem;
+    padding: 1rem 1rem 2rem 1rem;
     height: 65vh;
 }
 
