@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <div class="frontpainelwrapper">
     <div class="description frontcard">
       <p>I'm a Front-end Software Developer based in Japan.</p>
       <p>
@@ -27,7 +27,7 @@
         </li>
       </ul>
     </div>
-  </section>
+  </div>
 </template>
 
 <script>
@@ -42,12 +42,13 @@ export default {
 </script>
 
 <style scoped>
-section {
+.frontpainelwrapper {
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
+  height: 100%;
 }
 
 ul {
@@ -97,7 +98,6 @@ li:hover .skilltext {
 
 .description {
   font-size: 2rem;
-  padding: 3rem;
   text-align: justify;
 }
 

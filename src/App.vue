@@ -68,6 +68,8 @@ section {
   max-width: 1000px;
   margin: 0 auto;
   padding: 5vh 5vw;
+  display: flex;
+  align-items: center;
 }
 
 </style>
