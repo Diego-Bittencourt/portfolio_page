@@ -24,6 +24,11 @@ export default {
       required: false,
       default: false,
     },
+    button: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
     outlink: {
       type: Boolean,
       required: false,

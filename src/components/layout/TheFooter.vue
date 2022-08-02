@@ -1,7 +1,7 @@
 <template>
   <footer>
     <ul>
-      <li><h2>Contact:</h2></li>
+      <li><h2>Links:</h2></li>
       <li>
         <base-button outlink>
           <font-awesome-icon icon="fa-brands fa-linkedin" />
