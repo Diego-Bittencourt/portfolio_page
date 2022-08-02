@@ -20,11 +20,11 @@ export default {
 
 <style scoped>
 .card {
-    width: 90%;
+    /* width: 90%; */
     box-shadow: 0 0 10px rgb(139, 139, 139);
-    margin: 2rem auto;
+    margin: 0 auto;
     max-width: 35rem;
-    max-height: 35rem;
+    /* max-height: 35rem; */
     transition: 0.3s;
     border-radius: 10px;
     cursor: default;

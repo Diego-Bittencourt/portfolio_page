@@ -66,8 +66,8 @@ section {
   min-height: 80vh;
   width: 95%;
   max-width: 1000px;
-  min-height: 80vh;
   margin: 0 auto;
+  padding: 5vh 5vw;
 }
 
 </style>
