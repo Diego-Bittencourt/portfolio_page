@@ -1,7 +1,11 @@
 <template>
   <the-header @set-color="setColor"></the-header>
   <section>
-    <router-view></router-view>
+    <router-view v-slot="slotProps">
+      <transition name="route" mode="out-in">
+        <component :is="slotProps.Component"></component>
+      </transition>
+    </router-view>
   </section>
   <the-footer></the-footer>
 </template>
@@ -70,6 +74,30 @@ section {
   padding: 5vh 5vw;
   display: flex;
   align-items: center;
+}
+
+.route-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.route-enter-active {
+  transition: all 0.5s ease-out;
+}
+
+.route-enter-to,
+.route-leave-from {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.route-leave-active {
+  transition: all 0.3s ease-in;
+}
+
+.route-leave-to {
+  opacity: 0;
+  transform: scale(0.8);
 }
 
 </style>
