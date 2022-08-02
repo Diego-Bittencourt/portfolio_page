@@ -73,7 +73,8 @@ export default {
             userMessage: this.userMessage
         }
 
-        console.log(userData)
+        this.$router.push("/");
+        console.log(userData);
     },
   },
 };
