@@ -1,21 +1,32 @@
 <template>
   <section>
-      <div class="description frontcard">
-        <p>
-          I'm a Front-end Software Developer based in Japan.
-        </p>
-        <p>I'm passionate about using my problem-solving skills to help people.</p>
-        
-      </div>
-      <div class="animation frontcard">
-        <p>Skills</p>
-        <ul>
-          <li :class="color"><font-awesome-icon icon="fa-brands fa-html5" /></li>
-          <li :class="color"><font-awesome-icon icon="fa-brands fa-css3-alt" /></li>
-          <li :class="color"><font-awesome-icon icon="fa-brands fa-square-js" /></li>
-          <li :class="color"><font-awesome-icon icon="fa-brands fa-vuejs" /></li>
-        </ul>
-      </div>
+    <div class="description frontcard">
+      <p>I'm a Front-end Software Developer based in Japan.</p>
+      <p>
+        I'm passionate about using my problem-solving skills to help people.
+      </p>
+    </div>
+    <div class="animation frontcard">
+      <p>Skills</p>
+      <ul>
+        <li :class="color">
+          <h5 class="skilltext">HTML5</h5>
+          <font-awesome-icon class="skillsicon" icon="fa-brands fa-html5" />
+        </li>
+        <li :class="color">
+          <h5 class="skilltext">CSS3</h5>
+          <font-awesome-icon class="skillsicon" icon="fa-brands fa-css3-alt" />
+        </li>
+        <li :class="color">
+          <h5 class="skilltext">Javascript</h5>
+          <font-awesome-icon class="skillsicon" icon="fa-brands fa-square-js" />
+        </li>
+        <li :class="color">
+          <h5 class="skilltext">Vue.js</h5>
+          <font-awesome-icon class="skillsicon" icon="fa-brands fa-vuejs" />
+        </li>
+      </ul>
+    </div>
   </section>
 </template>
 
@@ -46,12 +57,42 @@ ul {
   align-items: center;
 }
 
+h5 {
+  font-size: 1.5rem;
+  text-align: center;
+  font-size: bold;
+}
+
 li {
   font-size: 5rem;
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  overflow: hidden;
+  margin-top: -10px;
+}
+
+li:hover .skillsicon {
+  transform: translateY(80px);
+}
+
+.skillsicon {
+  transition: 1s;
 }
 
 p {
   margin: 2rem;
+}
+
+.skilltext {
+  font-size: bold;
+  transform: translateY(-50px);
+  transition: 1s;
+}
+
+
+li:hover .skilltext {
+  transform: translateY(30px);
 }
 
 .description {
@@ -63,7 +104,6 @@ p {
 .frontcard {
   width: 40%;
   min-width: 250px;
-  
 }
 
 .green,
@@ -73,15 +113,27 @@ p {
   padding: 1rem;
 }
 
+.green .skillsicon {
+  color: #4d9c5b;
+}
+
+.blue .skillsicon {
+  color: rgb(36, 36, 179);
+}
+
+.red .skillsicon {
+ color: rgb(190, 60, 60);
+}
+
 .green:hover {
-  color:  #4d9c5b;
+  text-shadow: 0 8px 10px #4d9c5b;
 }
 
 .red:hover {
-  color:  rgb(190, 60, 60);
+  text-shadow: 0 8px 10px rgb(190, 60, 60);
 }
 
 .blue:hover {
-  color: rgb(36, 36, 179);
+  text-shadow: 0 8px 10px rgb(36, 36, 179);
 }
 </style>
