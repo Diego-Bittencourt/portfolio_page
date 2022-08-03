@@ -23,8 +23,8 @@ export default {
         {
           title: "Find a Code Buddy",
           desc: "A small social media in which you create an account, create code requests, register as a mentor, send a message to a mentor and see other users code requests. Back end provided by FireBase.",
-          gitlink: "www.github.com",
-          livelink: "www.google.com",
+          gitlink: "https://github.com/Diego-Bittencourt/find_mentor",
+          livelink: "https://vue-http-demo-69dfb.firebaseapp.com/",
         },
         {
           title: "Rock, scissors, paper, lizard and Spock",
