@@ -1,5 +1,5 @@
 <template>
-  <button v-if="button" :class="color">
+  <button v-if="button" :class="color" class="simplebutton">
     <slot></slot>
   </button>
   <router-link v-if="link" :to="to" :class="color">
@@ -62,6 +62,12 @@ button {
   justify-content: center;
   align-items: center;
   padding: 1rem;
+}
+
+.simplebutton {
+  background-color: #fff;
+  border-color: #444;
+  box-shadow: 3px 3px 5px 0px #0e0d0d7e;
 }
 
 button:hover,

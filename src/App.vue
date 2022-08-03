@@ -64,6 +64,7 @@ html {
 
 body {
   font-size: 1.6rem;
+  background-image: linear-gradient(135deg, rgb(221, 221, 221), rgb(119, 119, 119));
 }
 
 section {
@@ -71,7 +72,7 @@ section {
   width: 95%;
   max-width: 1000px;
   margin: 0 auto;
-  padding: 5vh 5vw;
+  padding: 5vh 2vw;
   display: flex;
   align-items: center;
 }

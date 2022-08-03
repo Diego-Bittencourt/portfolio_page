@@ -28,6 +28,7 @@ export default {
     transition: 0.3s;
     border-radius: 10px;
     cursor: default;
+    background-color: #ddd;
 }
 
 .blue:hover {
