@@ -1,5 +1,5 @@
 <template>
-  <div class="slimewrapper">
+  <div class="slimewrapper" :style="moveSlime">
     <div class="slimeoutlayer">
       <div class="slimesublayer">
         <div class="slimeinnerlayer" :class="color">
@@ -7,6 +7,9 @@
           <div class="left eye" :class="lefteyeshape"></div>
           <div class="right eye" :class="righteyeshape"></div>
           </div>
+          <div class="slimefoot"></div>
+          <div class="whitedot dot1"></div>
+          <div class="whitedot dot2"></div>
         </div>
       </div>
     </div>
@@ -19,8 +22,35 @@ export default {
   data() {
     return {
       slimeColor: "green",
-      color: this.color
+      color: this.color,
+      positionX: 300,
+      positionY: 300,
+      slimeDirection: 1
     };
+  },
+  mounted() {
+    //adding a Vanilla JS event listener to the window.
+    window.addEventListener('keypress', this.handleKeyPress);
+  },
+  methods: {
+    handleKeyPress(e) {
+      const keyCode = String(e.keyCode || e.code || e.keyIdentifier);
+      if (keyCode == "119") {
+        this.positionY = this.positionY - 10;
+      } else if (keyCode === "97") {
+        this.positionX = this.positionX - 10;
+        this.slimeDirection = -1;
+      } else if (keyCode === "115") {
+        this.positionY = this.positionY + 10;
+      } else if (keyCode === "100") {
+        this.positionX = this.positionX + 10;
+        this.slimeDirection = 1;
+      }
+
+      
+      console.log(keyCode);
+
+    },
   },
   computed: {
     lefteyeshape () {
@@ -40,6 +70,9 @@ export default {
       }  else {
         return "rightgreeneyes";
       }
+    },
+    moveSlime() {
+      return "left: " + this.positionX + "px; top: " + this.positionY + "px; transform: scaleX(" + this.slimeDirection + ");"
     }
   }
 };
@@ -52,20 +85,45 @@ export default {
   height: 75px;
   left: 50%;
   top: 50%;
+  z-index: 5;
+  transition: 0.3s;
 }
 
 .slimeoutlayer {
-  border: 3px solid black;
+  border: 3px solid rgba(0, 0, 0, 0.712);
   border-radius: 100px 100px 100px 50px;
   width: 100%;
   height: 100%;
 }
 
 .slimesublayer {
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.801);
+  border-top: 2px solid rgba(255, 255, 255, 0.801);
+  border-left: 2px solid rgba(255, 255, 255, 0.801);
   height: 100%;
   width: 100%;
   border-radius: 100px 100px 100px 50px;
+}
+
+.whitedot {
+  border-radius: 100%;
+  background-color: rgba(255, 255, 255, 0.801);
+  position: absolute;
+}
+
+.dot1 {
+  width: 10%;
+  height: 20%;
+  top: 15%;
+  left: 5%;
+  transform: rotate(40deg);
+}
+
+.dot2 {
+  width: 6%;
+  height: 8%;
+  top: 40%;
+  left: 7%;
 }
 
 .slimeinnerlayer {
@@ -75,6 +133,7 @@ export default {
   width: 100%;
   border-radius: 100px 100px 100px 50px;
   transition: 1s;
+  opacity: 0.8;
 }
 
 .green {
@@ -152,5 +211,16 @@ export default {
 
 .rightblueeyes {
   transform: rotate(135deg);
+}
+
+.slimefoot {
+  width: 70%;
+  height: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 8%;
+  background-color: rgba(48, 48, 48, 0.644);
+  border-radius: 100%;
+
 }
 </style>
