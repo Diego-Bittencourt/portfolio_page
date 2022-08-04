@@ -1,5 +1,6 @@
 <template>
   <the-header @set-color="setColor"></the-header>
+  <the-slime></the-slime>
   <section>
     <router-view v-slot="slotProps">
       <transition name="route" mode="out-in">
@@ -16,12 +17,14 @@
 <script>
 import TheHeader from './components/layout/TheHeader.vue';
 import TheFooter from './components/layout/TheFooter.vue';
+import TheSlime from './components/layout/TheSlime.vue';
 import { computed } from 'vue';
 
 export default {
   components: {
     TheHeader,
-    TheFooter
+    TheFooter,
+    TheSlime
   },
   data () {
     return {
