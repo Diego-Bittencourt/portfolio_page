@@ -6,7 +6,7 @@
       <div class="linkswrapper">
         <base-button outlink :receivedlink="gitlink">
         <h2><font-awesome-icon icon="fa-brands fa-github" /></h2></base-button>
-        <base-button outlink :receivedlink="desclink">
+        <base-button outlink :receivedlink="livelink">
         <h2><font-awesome-icon icon="fa-solid fa-globe" /></h2></base-button>
       </div>
     </li>
@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  props: ["title", "desc", "gitlink", "desclink"],
+  props: ["title", "desc", "gitlink", "livelink"],
 };
 </script>
 
