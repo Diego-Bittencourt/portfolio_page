@@ -36,14 +36,14 @@ export default {
     handleKeyPress(e) {
       const keyCode = String(e.keyCode || e.code || e.keyIdentifier);
       if (keyCode == "119") {
-        this.positionY = this.positionY - 10;
+        this.positionY = this.positionY - 5;
       } else if (keyCode === "97") {
-        this.positionX = this.positionX - 10;
+        this.positionX = this.positionX - 5;
         this.slimeDirection = -1;
       } else if (keyCode === "115") {
-        this.positionY = this.positionY + 10;
+        this.positionY = this.positionY + 5;
       } else if (keyCode === "100") {
-        this.positionX = this.positionX + 10;
+        this.positionX = this.positionX + 5;
         this.slimeDirection = 1;
       }
 
@@ -86,7 +86,7 @@ export default {
   left: 50%;
   top: 50%;
   z-index: 5;
-  transition: 0.3s;
+  transition: 0.1s;
 }
 
 .slimeoutlayer {
