@@ -1,6 +1,5 @@
 <template>
   <div class="slimewrapper" :style="moveSlime">
-    {{ floatTime }}
     <div class="slimeoutlayer" :style="slimeFloat">
       <div class="slimesublayer">
         <div class="slimeinnerlayer" :class="color">
@@ -39,7 +38,7 @@ export default {
   },
   methods: {
     fastFloatTime () {
-      this.floatTime = "0.5"
+      this.floatTime = "0.3"
     },
     slowFloatTime () {
       this.floatTime = "4"
@@ -49,12 +48,12 @@ export default {
       if (keyCode == "119") {
         this.positionY = this.positionY - 0.5;
       } else if (keyCode === "97") {
-        this.positionX = this.positionX - 0.5;
+        this.positionX = this.positionX - 0.3;
         this.slimeDirection = -1;
       } else if (keyCode === "115") {
         this.positionY = this.positionY + 0.5;
       } else if (keyCode === "100") {
-        this.positionX = this.positionX + 0.5;
+        this.positionX = this.positionX + 0.3;
         this.slimeDirection = 1;
       }
     },
@@ -107,7 +106,6 @@ export default {
   top: 50%;
   z-index: 5;
   transition: 0.1s;
-  border: 1px solid purple;
 }
 
 .slimefloorlayer {
