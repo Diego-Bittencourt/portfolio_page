@@ -1,4 +1,10 @@
 <template>
+  <after-burn
+    :posX="positionX"
+    :posY="positionY"
+    :direction="slimeDirection"
+    :fireSpell="fireSpell"
+  ></after-burn>
   <div class="slimewrapper" :style="moveSlime">
     <div class="slimeoutlayer" :style="slimeFloat">
       <div class="slimesublayer">
@@ -17,7 +23,12 @@
 </template>
 
 <script>
+import AfterBurn from "../slime/AfterBurn.vue";
+
 export default {
+  components: {
+    AfterBurn,
+  },
   inject: ["color"],
   data() {
     return {
@@ -27,6 +38,7 @@ export default {
       positionY: 45,
       slimeDirection: 1,
       floatTime: "4",
+      fireSpell: false
     };
   },
   mounted() {
@@ -34,28 +46,33 @@ export default {
     window.addEventListener("keypress", this.handleKeyPress);
     window.addEventListener("keydown", this.fastFloatTime);
     window.addEventListener("keyup", this.slowFloatTime);
-    
   },
   methods: {
-    fastFloatTime () {
-      this.floatTime = "0.3"
+    fastFloatTime() {
+      this.floatTime = "0.3";
     },
-    slowFloatTime () {
-      this.floatTime = "4"
+    slowFloatTime() {
+      this.floatTime = "4";
     },
     handleKeyPress(e) {
       const keyCode = String(e.keyCode || e.code || e.keyIdentifier);
-      if (keyCode == "119") {
+      if (keyCode === "119" && this.positionY > 0) {
         this.positionY = this.positionY - 0.5;
-      } else if (keyCode === "97") {
+      } else if (keyCode === "97" && this.positionX > 0) {
         this.positionX = this.positionX - 0.3;
         this.slimeDirection = -1;
-      } else if (keyCode === "115") {
+      } else if (keyCode === "115" && this.positionY < 89.5) {
         this.positionY = this.positionY + 0.5;
-      } else if (keyCode === "100") {
+      } else if (keyCode === "100" && this.positionX < 90) {
         this.positionX = this.positionX + 0.3;
         this.slimeDirection = 1;
+      } else if (keyCode === "32") {
+        this.castSpell();
       }
+    },
+    castSpell() {
+      console.log("Cast Spell");
+      this.fireSpell = true;
     },
   },
   computed: {
@@ -89,10 +106,8 @@ export default {
       );
     },
     slimeFloat() {
-      
-        return ("animation-duration: " + this.floatTime + "s;")
-      
-    }
+      return "animation-duration: " + this.floatTime + "s;";
+    },
   },
 };
 </script>
@@ -129,19 +144,19 @@ export default {
   0% {
     transform: scaleX(1);
     width: 90%;
-    transform: translateY(0);
+    transform: translateY(0) skewX(0deg);
   }
 
   50% {
     transform: scaleY(0.8);
     width: 100%;
-    transform: translateY(3%);
+    transform: translateY(3%) skewX(-10deg);
   }
 
   100% {
     transform: scaleY(1);
     width: 90%;
-    transform: translateY(0);
+    transform: translateY(0) skewX(0deg);
   }
 }
 

@@ -139,6 +139,7 @@ li:hover .skilltext {
 .red {
   /* transition: 0.3s ease-in-out; */
   padding: 1rem;
+  
 }
 
 .green .skillsicon {
