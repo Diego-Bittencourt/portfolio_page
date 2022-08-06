@@ -4,6 +4,7 @@
     :posY="positionY"
     :direction="slimeDirection"
     :fireSpell="fireSpell"
+    @resetSpell="resetSpell"
   ></after-burn>
   <div class="slimewrapper" :style="moveSlime">
     <div class="slimeoutlayer" :style="slimeFloat">
@@ -38,7 +39,7 @@ export default {
       positionY: 45,
       slimeDirection: 1,
       floatTime: "4",
-      fireSpell: false
+      fireSpell: false,
     };
   },
   mounted() {
@@ -48,11 +49,31 @@ export default {
     window.addEventListener("keyup", this.slowFloatTime);
   },
   methods: {
-    fastFloatTime() {
-      this.floatTime = "0.3";
+    resetSpell () {
+      setTimeout(this.trueResetSpell, 500);
     },
-    slowFloatTime() {
-      this.floatTime = "4";
+    trueResetSpell () {
+      this.fireSpell = false
+    },
+    fastFloatTime(e) {
+      const keyCode = String(e.keyCode || e.code || e.keyIdentifier);
+      if (
+        keyCode === "87" ||
+        keyCode === "68" ||
+        keyCode === "83" ||
+        keyCode === "65"
+      ) {
+        this.floatTime = "0.3";
+      }
+    },
+    slowFloatTime(e) {
+      const keyCode = String(e.keyCode || e.code || e.keyIdentifier);
+      if (keyCode === "87" ||
+        keyCode === "68" ||
+        keyCode === "83" ||
+        keyCode === "65") {
+        this.floatTime = "4";
+      }
     },
     handleKeyPress(e) {
       const keyCode = String(e.keyCode || e.code || e.keyIdentifier);
