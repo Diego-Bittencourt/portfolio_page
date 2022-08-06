@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     resetSpell () {
-      setTimeout(this.trueResetSpell, 500);
+      setTimeout(this.trueResetSpell, 100);
     },
     trueResetSpell () {
       this.fireSpell = false
