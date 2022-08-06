@@ -1,6 +1,7 @@
 <template>
   <div class="fireball" :style="fireBallPosition"></div>
   <div class="burnwrap" :style="burnPosition">
+    {{ fireBallX }}
     <div class="scratchwrapper">
       <div class="scratch scar1"></div>
       <div class="scratch scar2"></div>
@@ -36,11 +37,28 @@ export default {
     },
     updatePosition(numbY, numbX) {
       this.positionY = numbY + 9.5;
-      this.positionX = numbX + 10 * this.direction;
+      this.positionX = 2.5 + numbX + 10 * this.direction;
     },
     castFireBall(numbY, numbX) {
-      this.fireBallX = numbX;
-      this.fireBallY = numbY;
+      console.log("cast fire bell")
+      this.fireBallX = 3 + numbX;
+      this.fireBallY = 2.5 + numbY;
+      this.moveFireBall();
+    },
+    moveFireBall () {
+      console.log("move Fire ball");
+      let id = null;
+      let index = 1;
+      clearInterval(id);
+      id = setInterval(frame, 10);
+      function frame() {
+        if (index === 200) {
+          clearInterval(id);
+        } else if (index < 100)  {
+          this.fireBallY = this.fireBallY - 1;
+          this.fireBallX = (this.fireBallX + 1)* this.direction;
+        }
+      }
     }
   },
   computed: {
