@@ -28,7 +28,7 @@ export default {
       positionY: 10,
       slimeDirection: 1,
       fireBallX: 10,
-      fireBallY: 10
+      fireBallY: 10,
     };
   },
   methods: {
@@ -40,12 +40,12 @@ export default {
       this.positionX = 2.5 + numbX + 10 * this.direction;
     },
     castFireBall(numbY, numbX) {
-      console.log("cast fire bell")
+      console.log("cast fire bell");
       this.fireBallX = 3 + numbX;
       this.fireBallY = 2.5 + numbY;
       this.moveFireBall();
     },
-    moveFireBall () {
+    moveFireBall() {
       console.log("move Fire ball");
       let id = null;
       let index = 1;
@@ -54,13 +54,13 @@ export default {
       function frame() {
         if (index === 200) {
           clearInterval(id);
-        } else if (index < 100)  {
+        } else if (index < 100) {
           this.fireBallY = this.fireBallY - 1;
-          this.fireBallX = (this.fireBallX + 1)* this.direction;
+          this.fireBallX = (this.fireBallX + 1) * this.direction;
           index++;
         }
       }
-    }
+    },
   },
   computed: {
     burnPosition() {
@@ -75,9 +75,9 @@ export default {
       //   return "not yet"
       // }
     },
-    fireBallPosition () {
+    fireBallPosition() {
       return "top: " + this.fireBallY + "%; left: " + this.fireBallX + "%;";
-    }
+    },
   },
   watch: {
     fireSpell(val) {
@@ -97,9 +97,39 @@ export default {
   border-radius: 50%;
   height: 30px;
   width: 30px;
-  background-color : red;
+  background: radial-gradient(
+      circle at 50% 0,
+      rgba(255, 0, 0, 0.5),
+      rgba(208, 255, 0, 0) 70.71%
+    ),
+    radial-gradient(
+      circle at 6.7% 75%,
+      rgba(255, 0, 255, 0.5),
+      rgba(255, 0, 85, 0) 70.71%
+    ),
+    radial-gradient(
+        circle at 93.3% 75%,
+        rgba(255, 94, 0, 0.5),
+        rgba(255, 0, 0, 0.568) 70.71%
+      )
+      beige;
+  border: 1px solid black;
   z-index: 5;
+  animation: roundfireball 0.5s linear infinite;
 }
+
+@keyframes roundfireball {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .burnwrap {
   width: 5%;
   height: 2%;
