@@ -64,7 +64,7 @@ export default {
   },
   computed: {
     burnPosition() {
-      return "top: " + this.positionY + "%; left: " + this.positionX + "%;";
+      return "top: " + this.positionY + "%; left: " + this.positionX + "%; animation: fireballmove 2s infinite ease-in-out;";
       // if (this.fireSpell) {
       // // this.positionX = this.posX;
       // // this.positionY = this.posY;
@@ -92,6 +92,19 @@ export default {
 </script>
 
 <style scoped>
+@keyframes fireballmove {
+  0% {
+    transform: translateX(0) translateY(0)
+  }
+
+  50% {
+    transform: translateX(40px) translateY(-60px)
+  }
+
+  100% {
+    transform: translateX(100px) translateY(35px);
+  }
+}
 .fireball {
   position: absolute;
   border-radius: 50%;
@@ -116,6 +129,7 @@ export default {
   border: 1px solid black;
   z-index: 5;
   animation: roundfireball 0.5s linear infinite;
+  animation: fireballmove 2s infinite ease-in-out;
 }
 
 @keyframes roundfireball {
