@@ -57,6 +57,7 @@ export default {
         } else if (index < 100)  {
           this.fireBallY = this.fireBallY - 1;
           this.fireBallX = (this.fireBallX + 1)* this.direction;
+          index++;
         }
       }
     }
@@ -112,6 +113,7 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
+  margin-top: -20px;
 }
 
 .scratch {
