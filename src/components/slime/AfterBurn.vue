@@ -7,6 +7,8 @@
       <div class="flame orangeflame"></div>
       <div class="flame yellowflame"></div>
       <div class="flame whiteflame"></div>
+      <div class="base blueflame"></div>
+      <div class="base blackflam"></div>
     </div>
   </div>
   <div class="burnwrap" :style="burnPosition">
@@ -110,6 +112,18 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: flameflick 3ms ease-in infinite;
+}
+
+
+@keyframes flameflick {
+0% {transform: rotate(1deg);}
+20% {transform: rotate(-2deg) scale(1.05);}
+40% {transform: rotate(1deg);}
+60% {transform: rotate(-2deg) scale(0.99);}
+80% {transform: rotate(2deg);}
+100% {transform: rotate(-1deg) scale(1.03);}
+
 }
 
 .flame {
@@ -147,6 +161,27 @@ export default {
   width: 100%;
   height: 100%;
   box-shadow: 0px 0px 8px 3px red;
+}
+
+.blueflame {
+  background-color: darkblue;
+  width: 15%;
+  height: 15%;
+  box-shadow: 0px 0px 10px 7px darkblue;
+}
+
+.blackflame {
+  background-color: black;
+  width: 30%;
+  height: 30%;
+  box-shadow: 0px 0px 10px 7px black;
+  margin-bottom: -30px;
+}
+
+.base {
+  position: absolute;
+  border-radius: 50%;
+  bottom: 0;
 }
 
 .flame {
