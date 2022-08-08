@@ -1,30 +1,36 @@
 <template>
-  <div class="fireball" :style="fireBallPosition"></div>
-  <div class="flamewrapper" :style="flamePosition">
-    <div class="innerflamewrapper">
-      <div class="flame redflame"></div>
-      <div class="flame pinkflame"></div>
-      <div class="flame orangeflame"></div>
-      <div class="flame yellowflame"></div>
-      <div class="flame whiteflame"></div>
-      <div class="base blueflame"></div>
-      <div class="base blackflam"></div>
+  <transition name="fireball">
+    <div v-if="isBallActive" class="fireball" :style="fireBallPosition"></div>
+  </transition>
+  <transition name="flame">
+    <div v-if="isFlameActive" class="flamewrapper" :style="flamePosition">
+      <div class="innerflamewrapper">
+        <div class="flame redflame"></div>
+        <div class="flame pinkflame"></div>
+        <div class="flame orangeflame"></div>
+        <div class="flame yellowflame"></div>
+        <div class="flame whiteflame"></div>
+        <div class="base blueflame"></div>
+        <div class="base blackflam"></div>
+      </div>
     </div>
-  </div>
-  <div class="burnwrap" :style="burnPosition">
-    <div class="scratchwrapper">
-      <div class="scratch scar1"></div>
-      <div class="scratch scar2"></div>
-      <div class="scratch scar3"></div>
-      <div class="scratch scar4"></div>
-      <div class="scratch scar5"></div>
-      <div class="scratch scar6"></div>
-      <div class="scratch scar7"></div>
-      <div class="scratch scar8"></div>
-      <div class="scratch scar9"></div>
-      <div class="scratch scar0"></div>
+  </transition>
+  <transition name="burnmark">
+    <div v-if="isBurnActive" class="burnwrap" :style="burnPosition">
+      <div class="scratchwrapper">
+        <div class="scratch scar1"></div>
+        <div class="scratch scar2"></div>
+        <div class="scratch scar3"></div>
+        <div class="scratch scar4"></div>
+        <div class="scratch scar5"></div>
+        <div class="scratch scar6"></div>
+        <div class="scratch scar7"></div>
+        <div class="scratch scar8"></div>
+        <div class="scratch scar9"></div>
+        <div class="scratch scar0"></div>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
@@ -39,11 +45,22 @@ export default {
       slimeDirection: 1,
       fireBallX: 10,
       fireBallY: 10,
-      flameX:10,
-      flameY:10
+      flameX: 10,
+      flameY: 10,
+      isBallActive: false,
+      isFlameActive: false,
+      isBurnActive: false
     };
   },
   methods: {
+    castAnimation() {
+      this.isBallActive = true;
+      setTimeout(() => this.isBallActive = false, 2000);
+      setTimeout(() => this.isFlameActive = true, 1000);
+      setTimeout(() => this.isFlameActive = false, 3000);
+      setTimeout(() => this.isBurnActive = true, 3000);
+      setTimeout(() => this.isBurnActive = false, 5000);
+    },
     resetSpell() {
       this.$emit("resetSpell");
     },
@@ -59,28 +76,19 @@ export default {
     flameActivate(numbY, numbX) {
       this.flameX = 3.7 + numbX + 10 * this.direction;
       this.flameY = numbY;
-    }
+    },
   },
   computed: {
     burnPosition() {
       return "top: " + this.positionY + "%; left: " + this.positionX + "%;";
-      // if (this.fireSpell) {
-      // // this.positionX = this.posX;
-      // // this.positionY = this.posY;
-      // // this.slimeDirection = this.direction;
-      // return "top: " + this.posY + "%; left: " + this.posX + "%;";
-
-      // } else {
-      //   return "not yet"
-      // }
     },
     fireBallPosition() {
       console.log("positao", this.fireBallY);
       return "top: " + this.fireBallY + "%; left: " + this.fireBallX + "%;";
     },
     flamePosition() {
-      return "top: " + this.flameY + "%; left: " + this.flameX + "%;"
-    }
+      return "top: " + this.flameY + "%; left: " + this.flameX + "%;";
+    },
   },
   watch: {
     fireSpell(val) {
@@ -88,6 +96,7 @@ export default {
       this.updatePosition(this.posY, this.posX);
       this.castFireBall(this.posY, this.posX);
       this.flameActivate(this.posY, this.posX);
+      this.castAnimation();
       this.resetSpell();
       return val;
     },
@@ -96,12 +105,69 @@ export default {
 </script>
 
 <style scoped>
+.fireball-enter-from {
+  transform: translateY(-60px);
+  opacity: 0;
+}
+
+.fireball-enter-to,
+.fireball-leave-from {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.fireball-enter-active,
+.fireball-leave-active {
+  transition: all 1s ease-in;
+}
+
+.fireball-leave-to {
+  opacity: 0;
+}
+
+.flame-enter-from {
+  transform: scaleY(0) translateY(60px);
+  opacity: 0;
+}
+
+.flame-enter-to,
+.flame-leave-from {
+  transform: scaleY(1) translateY(0);
+  opacity: 0.8;
+}
+
+.flame-enter-active,
+.flame-leave-active {
+  transition: all 1s ease-in-out;
+}
+
+.flame-leave-to {
+  transform: scaleY(1) translateY(0);
+  opacity: 0;
+}
+
+.burnmark-enter-from,
+.burnmark-leave-to {
+  opacity: 0;
+}
+
+.burnmark-enter-to,
+.burnmark-leave-from {
+  opacity: 1;
+}
+
+.burnmark-enter-active,
+.burnmark-leave-active {
+  transition: all 1s ease-in-out;
+}
+
+
+
 .flamewrapper {
   opacity: 0.7;
   height: 50px;
   width: 50px;
   position: absolute;
-  border: 1px solid red;
   z-index: 5;
 }
 
@@ -115,15 +181,25 @@ export default {
   animation: flameflick 3ms ease-in infinite;
 }
 
-
 @keyframes flameflick {
-0% {transform: rotate(1deg);}
-20% {transform: rotate(-2deg) scale(1.05);}
-40% {transform: rotate(1deg);}
-60% {transform: rotate(-2deg) scale(0.99);}
-80% {transform: rotate(2deg);}
-100% {transform: rotate(-1deg) scale(1.03);}
-
+  0% {
+    transform: rotate(1deg);
+  }
+  20% {
+    transform: rotate(-2deg) scale(1.05);
+  }
+  40% {
+    transform: rotate(1deg);
+  }
+  60% {
+    transform: rotate(-2deg) scale(0.99);
+  }
+  80% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(-1deg) scale(1.03);
+  }
 }
 
 .flame {
