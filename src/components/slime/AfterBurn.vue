@@ -1,5 +1,14 @@
 <template>
   <div class="fireball" :style="fireBallPosition"></div>
+  <div class="flamewrapper" :style="flamePosition">
+    <div class="innerflamewrapper">
+      <div class="flame redflame"></div>
+      <div class="flame pinkflame"></div>
+      <div class="flame orangeflame"></div>
+      <div class="flame yellowflame"></div>
+      <div class="flame whiteflame"></div>
+    </div>
+  </div>
   <div class="burnwrap" :style="burnPosition">
     <div class="scratchwrapper">
       <div class="scratch scar1"></div>
@@ -27,7 +36,9 @@ export default {
       positionY: 10,
       slimeDirection: 1,
       fireBallX: 10,
-      fireBallY: 10
+      fireBallY: 10,
+      flameX:10,
+      flameY:10
     };
   },
   methods: {
@@ -36,13 +47,17 @@ export default {
     },
     updatePosition(numbY, numbX) {
       this.positionY = numbY + 7;
-      this.positionX = 3 + numbX + 10*this.direction;
+      this.positionX = 3 + numbX + 10 * this.direction;
     },
     castFireBall(numbY, numbX) {
       console.log(numbY, numbX);
-      this.fireBallX = 3.7 + numbX + 10*this.direction;
+      this.fireBallX = 4.8 + numbX + 10 * this.direction;
       this.fireBallY = 3.7 + numbY;
     },
+    flameActivate(numbY, numbX) {
+      this.flameX = 3.7 + numbX + 10 * this.direction;
+      this.flameY = numbY;
+    }
   },
   computed: {
     burnPosition() {
@@ -58,15 +73,19 @@ export default {
       // }
     },
     fireBallPosition() {
-      console.log("positao", this.fireBallY)
+      console.log("positao", this.fireBallY);
       return "top: " + this.fireBallY + "%; left: " + this.fireBallX + "%;";
     },
+    flamePosition() {
+      return "top: " + this.flameY + "%; left: " + this.flameX + "%;"
+    }
   },
   watch: {
     fireSpell(val) {
       console.log("eita");
       this.updatePosition(this.posY, this.posX);
       this.castFireBall(this.posY, this.posX);
+      this.flameActivate(this.posY, this.posX);
       this.resetSpell();
       return val;
     },
@@ -75,12 +94,71 @@ export default {
 </script>
 
 <style scoped>
+.flamewrapper {
+  opacity: 0.7;
+  height: 50px;
+  width: 50px;
+  position: absolute;
+  border: 1px solid red;
+  z-index: 5;
+}
+
+.innerflamewrapper {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flame {
+  border-radius: 50% 0 50% 50%;
+  position: absolute;
+  transform: rotate(-45deg);
+}
+
+.whiteflame {
+  background-color: white;
+  width: 30%;
+  height: 30%;
+  box-shadow: 0px 0px 9px 2px white;
+}
+.yellowflame {
+  background-color: yellow;
+  width: 50%;
+  height: 50%;
+  box-shadow: 0px 0px 6px 2px yellow;
+}
+.orangeflame {
+  background-color: orangered;
+  width: 70%;
+  height: 70%;
+  box-shadow: 0px 0px 8px 3px orangered;
+}
+.pinkflame {
+  background-color: rgb(236, 99, 207);
+  width: 85%;
+  height: 85%;
+  box-shadow: 0px 0px 10px 3px rgb(236, 99, 207);
+}
+.redflame {
+  background-color: red;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 0px 8px 3px red;
+}
+
+.flame {
+  position: absolute;
+  bottom: 0;
+}
 
 .fireball {
   position: absolute;
   border-radius: 50%;
-  height: 30px;
-  width: 30px;
+  height: 20px;
+  width: 20px;
   background: radial-gradient(
       circle at 50% 0,
       rgba(255, 0, 0, 0.5),
