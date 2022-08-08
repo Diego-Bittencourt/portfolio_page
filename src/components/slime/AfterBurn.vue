@@ -1,7 +1,6 @@
 <template>
   <div class="fireball" :style="fireBallPosition"></div>
   <div class="burnwrap" :style="burnPosition">
-    {{ fireBallX }}
     <div class="scratchwrapper">
       <div class="scratch scar1"></div>
       <div class="scratch scar2"></div>
@@ -28,7 +27,7 @@ export default {
       positionY: 10,
       slimeDirection: 1,
       fireBallX: 10,
-      fireBallY: 10,
+      fireBallY: 10
     };
   },
   methods: {
@@ -36,35 +35,18 @@ export default {
       this.$emit("resetSpell");
     },
     updatePosition(numbY, numbX) {
-      this.positionY = numbY + 9.5;
-      this.positionX = 2.5 + numbX + 10 * this.direction;
+      this.positionY = numbY + 7;
+      this.positionX = 3 + numbX + 10*this.direction;
     },
     castFireBall(numbY, numbX) {
-      console.log("cast fire bell");
-      this.fireBallX = 3 + numbX;
-      this.fireBallY = 2.5 + numbY;
-      this.moveFireBall();
-    },
-    moveFireBall() {
-      console.log("move Fire ball");
-      let id = null;
-      let index = 1;
-      clearInterval(id);
-      id = setInterval(frame, 10);
-      function frame() {
-        if (index === 200) {
-          clearInterval(id);
-        } else if (index < 100) {
-          this.fireBallY = this.fireBallY - 1;
-          this.fireBallX = (this.fireBallX + 1) * this.direction;
-          index++;
-        }
-      }
+      console.log(numbY, numbX);
+      this.fireBallX = 3.7 + numbX + 10*this.direction;
+      this.fireBallY = 3.7 + numbY;
     },
   },
   computed: {
     burnPosition() {
-      return "top: " + this.positionY + "%; left: " + this.positionX + "%; animation: fireballmove 2s infinite ease-in-out;";
+      return "top: " + this.positionY + "%; left: " + this.positionX + "%;";
       // if (this.fireSpell) {
       // // this.positionX = this.posX;
       // // this.positionY = this.posY;
@@ -76,6 +58,7 @@ export default {
       // }
     },
     fireBallPosition() {
+      console.log("positao", this.fireBallY)
       return "top: " + this.fireBallY + "%; left: " + this.fireBallX + "%;";
     },
   },
@@ -92,19 +75,7 @@ export default {
 </script>
 
 <style scoped>
-@keyframes fireballmove {
-  0% {
-    transform: translateX(0) translateY(0)
-  }
 
-  50% {
-    transform: translateX(40px) translateY(-60px)
-  }
-
-  100% {
-    transform: translateX(100px) translateY(35px);
-  }
-}
 .fireball {
   position: absolute;
   border-radius: 50%;
@@ -129,7 +100,6 @@ export default {
   border: 1px solid black;
   z-index: 5;
   animation: roundfireball 0.5s linear infinite;
-  animation: fireballmove 2s infinite ease-in-out;
 }
 
 @keyframes roundfireball {
@@ -157,7 +127,7 @@ export default {
   position: relative;
   height: 100%;
   width: 100%;
-  margin-top: -20px;
+  /* margin-top: 0px; */
 }
 
 .scratch {
