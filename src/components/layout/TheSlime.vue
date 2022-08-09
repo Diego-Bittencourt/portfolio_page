@@ -2,8 +2,8 @@
 <slime-dialog 
     :posX="positionX"
     :posY="positionY"
-    :diection="slimeDirection"
-    :fireSpell="fireSpell"></slime-dialog>
+    :direction="slimeDirection"
+    :fireSpell="isTalking"></slime-dialog>
   <after-burn
     :posX="positionX"
     :posY="positionY"
@@ -11,6 +11,13 @@
     :fireSpell="fireSpell"
     @resetSpell="resetSpell"
   ></after-burn>
+  <plant-seed
+  :posX="positionX"
+  :posY="positionY"
+  :direction="slimeDirection"
+  :plantSpell="plantSpell"
+  @resetSpell="resetSpell"
+  ></plant-seed>
   <div class="slimewrapper" :style="moveSlime">
     <div class="slimeoutlayer" :style="slimeFloat">
       <div class="slimesublayer">
@@ -31,22 +38,27 @@
 <script>
 import AfterBurn from "../slime/AfterBurn.vue";
 import SlimeDialog from "../slime/SlimeDialog.vue";
+import PlantSeed from "../slime/PlantSeed.vue";
 
 export default {
   components: {
     AfterBurn,
-    SlimeDialog
+    SlimeDialog,
+    PlantSeed
   },
   inject: ["color"],
   data() {
     return {
-      slimeColor: "green",
+      // slimeColor: "green",
       color: this.color,
       positionX: 45,
       positionY: 45,
       slimeDirection: 1,
       floatTime: "4",
       fireSpell: false,
+      plantSpell: false,
+      iceSpell: false,
+      isTalking: false
     };
   },
   mounted() {
@@ -61,6 +73,8 @@ export default {
     },
     trueResetSpell() {
       this.fireSpell = false;
+      this.plantSpell = false;
+      this.iceSPell = false;
     },
     fastFloatTime(e) {
       const keyCode = String(e.keyCode || e.code || e.keyIdentifier);
@@ -101,7 +115,15 @@ export default {
       }
     },
     castSpell() {
+      setTimeout(() => this.isTalking = true, 1500);
+      setTimeout(() => this.isTalking = false, 5000);
+      if(this.color.value === "red") {
       this.fireSpell = true;
+      } else if (this.color.value === "blue") {
+        this.iceSpell = true;
+      } else {
+        this.plantSpell = true;
+      }
     },
   },
   computed: {

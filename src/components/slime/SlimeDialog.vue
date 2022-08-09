@@ -1,6 +1,6 @@
 <template>
 <transition name="dialog">
-  <div v-if="isTalking" class="slimechat" :class="color" :style="dialogPosition"><p>{{slimePhrase}}</p></div>
+  <div v-if="fireSpell" class="slimechat" :class="color" :style="dialogPosition"><p>{{slimePhrase}}</p></div>
   </transition>
 </template>
 
@@ -10,7 +10,6 @@ export default {
     props: ['posY', 'posX', 'direction', 'fireSpell'],
   data() {
     return {
-      isTalking: false,
       color: this.color,
       slimePhrase: "",
       idlePhrases: {
@@ -57,10 +56,7 @@ export default {
   },
   watch: {
     fireSpell() {
-        console.log("dialoglaunched")
         this.displayActionDialog();
-        setTimeout(() => this.isTalking = true, 1500);
-        setTimeout(() => this.isTalking = false, 5000);
     }
   },
   methods: {
