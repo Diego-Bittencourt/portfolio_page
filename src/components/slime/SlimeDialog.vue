@@ -128,7 +128,7 @@ opacity: 1;
 }
 
 .dialog-enter-active {
- transition: 0.8s all ease-in-out;
+ transition: 0.4s all ease-in-out;
 }
 
 .dialog-leave-from {
