@@ -49,7 +49,7 @@ export default {
       flameY: 10,
       isBallActive: false,
       isFlameActive: false,
-      isBurnActive: false
+      isBurnActive: false,
     };
   },
   methods: {
@@ -133,7 +133,7 @@ export default {
 .flame-enter-to,
 .flame-leave-from {
   transform: scaleY(1) translateY(0);
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .flame-enter-active,

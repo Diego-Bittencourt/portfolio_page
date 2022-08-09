@@ -1,4 +1,9 @@
 <template>
+<slime-dialog 
+    :posX="positionX"
+    :posY="positionY"
+    :diection="slimeDirection"
+    :fireSpell="fireSpell"></slime-dialog>
   <after-burn
     :posX="positionX"
     :posY="positionY"
@@ -25,10 +30,12 @@
 
 <script>
 import AfterBurn from "../slime/AfterBurn.vue";
+import SlimeDialog from "../slime/SlimeDialog.vue";
 
 export default {
   components: {
     AfterBurn,
+    SlimeDialog
   },
   inject: ["color"],
   data() {
@@ -49,11 +56,11 @@ export default {
     window.addEventListener("keyup", this.slowFloatTime);
   },
   methods: {
-    resetSpell () {
+    resetSpell() {
       setTimeout(this.trueResetSpell, 100);
     },
-    trueResetSpell () {
-      this.fireSpell = false
+    trueResetSpell() {
+      this.fireSpell = false;
     },
     fastFloatTime(e) {
       const keyCode = String(e.keyCode || e.code || e.keyIdentifier);
@@ -68,10 +75,12 @@ export default {
     },
     slowFloatTime(e) {
       const keyCode = String(e.keyCode || e.code || e.keyIdentifier);
-      if (keyCode === "87" ||
+      if (
+        keyCode === "87" ||
         keyCode === "68" ||
         keyCode === "83" ||
-        keyCode === "65") {
+        keyCode === "65"
+      ) {
         this.floatTime = "4";
       }
     },
@@ -92,7 +101,6 @@ export default {
       }
     },
     castSpell() {
-      console.log("Cast Spell");
       this.fireSpell = true;
     },
   },
