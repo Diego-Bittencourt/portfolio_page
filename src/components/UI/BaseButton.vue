@@ -1,11 +1,11 @@
 <template>
-  <button v-if="button" :class="color" class="simplebutton">
+  <button v-if="button" class="simplebutton" :class="color" >
     <slot></slot>
   </button>
   <router-link v-if="link" :to="to" :class="color">
     <slot></slot>
   </router-link>
-  <a v-if="outlink" :href="receivedlink" target="_blank">
+  <a v-if="outlink" :class="color" :href="receivedlink" target="_blank">
     <slot></slot>
   </a>
 </template>
@@ -70,31 +70,33 @@ button {
   box-shadow: 3px 3px 5px 0px #0e0d0d7e;
 }
 
+
+button:active,
+a:active {
+  transform: scale(0.8);
+}
+
 button:hover,
 a:hover {
-  background-color: #494848;
   color: #dddddd;
   transition: 0.5s;
   border-color: #dddddd;
 }
 
-.green:active {
-  transform: scale(0.9);
+.green:hover {
   transition: 0.1s;
   background-color: #67b658;
   border-color: #67b658;
   
 }
 
-.red:active {
-  transform: scale(0.9);
+.red:hover {
   transition: 0.1s;
   background-color: rgb(190, 60, 60);
   border-color: rgb(190, 60, 60);
 }
 
-.blue:active {
-  transform: scale(0.9);
+.blue:hover {
   transition: 0.1s;
   background-color: rgb(36, 36, 179);
   border-color: rgb(36, 36, 179);
