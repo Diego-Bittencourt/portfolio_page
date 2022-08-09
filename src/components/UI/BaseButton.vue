@@ -66,6 +66,7 @@ button {
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  transition: all 0.3s ease-in; 
 }
 
 .simplebutton {
@@ -91,6 +92,7 @@ a:hover {
   transition: 0.1s;
   background-color: #67b658;
   border-color: #67b658;
+  transition: all 0.3s ease-in; 
   
 }
 
@@ -98,12 +100,15 @@ a:hover {
   transition: 0.1s;
   background-color: rgb(190, 60, 60);
   border-color: rgb(190, 60, 60);
+  transition: all 0.3s ease-in; 
 }
 
 .blue:hover {
   transition: 0.1s;
   background-color: rgb(36, 36, 179);
   border-color: rgb(36, 36, 179);
+  transition: all 0.3s ease-in; 
 }
+
 
 </style>
