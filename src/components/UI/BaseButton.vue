@@ -48,6 +48,10 @@ export default {
 </script>
 
 <style scoped>
+.router-link-active {
+  box-shadow: 0px 0px 5px 3px #cccccccc;
+}
+
 a,
 button {
   text-decoration: none;

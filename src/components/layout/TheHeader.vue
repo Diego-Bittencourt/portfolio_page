@@ -87,6 +87,7 @@ h1 {
 }
 
 .topwrapper {
+  padding: 0 10px;
   display: flex;
   justify-content: space-around;
   align-items: center;
