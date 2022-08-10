@@ -288,19 +288,6 @@ export default {
       beige;
   border: 1px solid black;
   z-index: 5;
-  animation: roundfireball 0.5s linear infinite;
-}
-
-@keyframes roundfireball {
-  0% {
-    transform: rotate(0);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }
 
 .burnwrap {
