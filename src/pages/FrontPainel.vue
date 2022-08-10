@@ -1,7 +1,7 @@
 <template>
   <div class="frontpainelwrapper">
     <div class="frontcard" :class="bkgroundcolor">
-      <div class="descriptiontext">
+      <div class="descriptiontext" v-if="false">
       <p>I'm a Front-end Software Developer based in Japan.</p>
       <p>
         I'm passionate about using my problem-solving skills to help people.
