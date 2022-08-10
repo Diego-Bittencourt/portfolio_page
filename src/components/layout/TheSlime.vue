@@ -122,6 +122,7 @@ export default {
       } else if (this.color.value === "blue") {
         this.iceSpell = true;
       } else {
+        console.log("casSpellreached")
         this.plantSpell = true;
       }
     },

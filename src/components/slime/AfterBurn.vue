@@ -92,7 +92,6 @@ export default {
   },
   watch: {
     fireSpell(val) {
-      console.log("eita");
       this.updatePosition(this.posY, this.posX);
       this.castFireBall(this.posY, this.posX);
       this.flameActivate(this.posY, this.posX);
