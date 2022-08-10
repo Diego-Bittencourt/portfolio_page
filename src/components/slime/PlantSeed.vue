@@ -32,8 +32,8 @@ export default {
   },
   methods: {
     updatePosition(numbY, numbX) {
-      this.positionY = numbY;
-      this.positionX = numbX;
+      this.positionY = numbY - 2;
+      this.positionX = 1 + numbX + 12*this.direction;
     },
     resetSpell() {
       this.$emit("resetSpell");
@@ -99,7 +99,6 @@ export default {
   position: absolute;
   border: 1px solid rgb(87, 77, 47);
   background-color: green;
-  z-index: 5;
 }
 
 .lf1 {
@@ -175,13 +174,13 @@ export default {
 
 .pt5 {
   bottom: 20%;
-  left: 20%;
+  left: 10%;
   transform: rotate(75deg);
 }
 
 .pt6 {
   bottom: 20%;
-  right: 20%;
+  right: 10%;
   transform: rotate(-75deg);
 }
 </style>
