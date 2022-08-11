@@ -1,22 +1,33 @@
 <template>
   <div class="plantwrapper" :style="seedPosition">
     <div class="plantoverlayer">
-      <div class="stem"></div>
-      <div class="leaf lf1"></div>
-      <div class="leaf lf2"></div>
-      <div class="leaf lf3"></div>
-      <div class="leaf lf4"></div>
-      <div class="ground"></div>
-      <div class="flowerwrapper">
-        <div class="flowerinnerwrapper">
-        <div class="petal pt6"></div>
-        <div class="petal pt5"></div>
-        <div class="petal pt4"></div>
-        <div class="petal pt3"></div>
-        <div class="petal pt2"></div>
-        <div class="petal pt1"></div>
+      <transition name="seed">
+        <div v-if="isSeedActive" class="seed"></div>
+      </transition>
+      <transition name="greenplant">
+        <div v-if="isPlantActive" class="greenPart">
+          <div class="stem"></div>
+          <div class="leaf lf1"></div>
+          <div class="leaf lf2"></div>
+          <div class="leaf lf3"></div>
+          <div class="leaf lf4"></div>
         </div>
-      </div>
+      </transition>
+      <transition name="ground">
+      <div class="ground" v-if="isGroundActive"></div>
+      </transition>
+      <transition name="flower">
+        <div v-if="isFlowerActive" class="flowerwrapper">
+          <div class="flowerinnerwrapper">
+            <div class="petal pt6"></div>
+            <div class="petal pt5"></div>
+            <div class="petal pt4"></div>
+            <div class="petal pt3"></div>
+            <div class="petal pt2"></div>
+            <div class="petal pt1"></div>
+          </div>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -28,15 +39,29 @@ export default {
     return {
       positionY: 10,
       positionX: 10,
+      isSeedActive: false,
+      isPlantActive: false,
+      isFlowerActive: false,
+      isGroundActive: false
     };
   },
   methods: {
     updatePosition(numbY, numbX) {
       this.positionY = numbY - 2;
-      this.positionX = 1 + numbX + 12*this.direction;
+      this.positionX = 1 + numbX + 12 * this.direction;
     },
     resetSpell() {
       this.$emit("resetSpell");
+    },
+    castAnimation() {
+      this.isGroundActive = true;
+      this.isSeedActive = true;
+      setTimeout(() => (this.isSeedActive = false), 2000);
+      setTimeout(() => (this.isPlantActive = true), 3000);
+      setTimeout(() => (this.isPlantActive = false), 7000);
+      setTimeout(() => (this.isFlowerActive = true), 5000);
+      setTimeout(() => (this.isFlowerActive = false), 7000);
+      setTimeout(() => (this.isGroundActive = false), 7000);
     },
   },
   computed: {
@@ -48,7 +73,7 @@ export default {
     plantSpell() {
       console.log("watcher done");
       this.updatePosition(this.posY, this.posX);
-      // this.castSeed();
+      this.castAnimation();
       this.resetSpell();
     },
   },
@@ -56,6 +81,77 @@ export default {
 </script>
 
 <style scoped>
+.seed-enter-from {
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+.seed-enter-to,
+.seed-leave-from {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.seed-enter-active,
+.seed-leave-active {
+  transition: 1s all ease-in;
+}
+
+.seed-leave-to {
+  opacity: 0;
+}
+
+.greenplant-enter-from,
+.greenplant-leave-to {
+  /* transform: scale(0.1); */
+  opacity: 0;
+}
+
+.greenplant-enter-to,
+.greenplant-leave-from {
+  /* transform: scale(1); */
+  opacity: 1;
+}
+
+.greenplant-enter-active,
+.greenplant-leave-active {
+  transition: 2s all ease-in-out;
+}
+
+.flower-enter-from,
+.flower-leave-to {
+  opacity: 0;
+}
+
+.flower-enter-to,
+.flower-leave-from {
+  opacity: 1;
+}
+
+.flower-enter-active,
+.flower-leave-active {
+  transition: 2s all ease-in-out;
+}
+
+.ground-leave-to {
+  opacity: 0;
+}
+
+.ground-leave-active {
+  transition: 2.5s all ease-in-out;
+}
+
+.seed {
+  height: 20%;
+  width: 20%;
+  border-radius: 50% 0 50% 0;
+  background-image: radial-gradient(rgb(158, 126, 66), rgb(119, 84, 38));
+  border: 1px solid black;
+  position: absolute;
+  left: 40%;
+  bottom: 0;
+}
+
 .ground {
   background-color: rgb(150, 83, 28);
   position: absolute;
@@ -64,7 +160,6 @@ export default {
   border-radius: 50%;
   width: 100%;
   height: 100%;
-
 }
 
 .plantwrapper {
