@@ -18,6 +18,13 @@
   :plantSpell="plantSpell"
   @resetSpell="resetSpell"
   ></plant-seed>
+  <ice-drop
+  :posX="positionX"
+  :posY="positionY"
+  :direction="slimeDirection"
+  :iceSpell="iceSpell"
+  @resetSpell="resetSpell"
+  ></ice-drop>
   <div class="slimewrapper" :style="moveSlime">
     <div class="slimeoutlayer" :style="slimeFloat">
       <div class="slimesublayer">
@@ -39,12 +46,14 @@
 import AfterBurn from "../slime/AfterBurn.vue";
 import SlimeDialog from "../slime/SlimeDialog.vue";
 import PlantSeed from "../slime/PlantSeed.vue";
+import IceDrop from "../slime/IceDrop.vue";
 
 export default {
   components: {
     AfterBurn,
     SlimeDialog,
-    PlantSeed
+    PlantSeed,
+    IceDrop
   },
   inject: ["color"],
   data() {
@@ -74,7 +83,7 @@ export default {
     trueResetSpell() {
       this.fireSpell = false;
       this.plantSpell = false;
-      this.iceSPell = false;
+      this.iceSpell = false;
     },
     fastFloatTime(e) {
       const keyCode = String(e.keyCode || e.code || e.keyIdentifier);

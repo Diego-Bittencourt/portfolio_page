@@ -71,7 +71,6 @@ export default {
   },
   watch: {
     plantSpell() {
-      console.log("watcher done");
       this.updatePosition(this.posY, this.posX);
       this.castAnimation();
       this.resetSpell();
