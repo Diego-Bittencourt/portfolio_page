@@ -96,6 +96,7 @@ export default {
   border-radius: 50%;
   position: absolute;
   animation: snowfall 3s infinite ease-in-out;
+  z-index: 5;
 }
 
 @keyframes snowfall {

@@ -1,13 +1,23 @@
 <template>
-<transition name="dialog">
-  <div v-if="fireSpell" class="slimechat" :class="color" :style="dialogPosition"><p>{{slimePhrase}}</p></div>
+  {{ dialogPosition }}
+  {{typeof direction}}
+  {{this.direction}}
+  <transition name="dialog">
+    <div
+      v-if="fireSpell"
+      class="slimechat"
+      :class="color"
+      :style="dialogPosition"
+    >
+      <p>{{ slimePhrase }}</p>
+    </div>
   </transition>
 </template>
 
 <script>
 export default {
-    inject: ['color'],
-    props: ['posY', 'posX', 'direction', 'fireSpell'],
+  inject: ["color"],
+  props: ["posY", "posX", "direction", "fireSpell"],
   data() {
     return {
       color: this.color,
@@ -56,41 +66,47 @@ export default {
   },
   watch: {
     fireSpell() {
-        this.displayActionDialog();
-    }
+      this.displayActionDialog();
+    },
   },
   methods: {
     displayActionDialog() {
-        if (this.color.value === 'blue') {
-            this.slimePhrase = this.spellPhrases.blue[Math.floor(Math.random() * 4)]
-        } else if (this.color.value === 'red') {
-            this.slimePhrase = this.spellPhrases.red[Math.floor(Math.random() * 4)]
-        } else {
-          this.slimePhrase = this.spellPhrases.green[Math.floor(Math.random() * 4)]
-        }
-    }
+      if (this.color.value === "blue") {
+        this.slimePhrase =
+          this.spellPhrases.blue[Math.floor(Math.random() * 4)];
+      } else if (this.color.value === "red") {
+        this.slimePhrase = this.spellPhrases.red[Math.floor(Math.random() * 4)];
+      } else {
+        this.slimePhrase =
+          this.spellPhrases.green[Math.floor(Math.random() * 4)];
+      }
+    },
   },
   computed: {
     dialogPosition() {
-        return "top: " + (this.posY - 8) + "%; left: " + (this.posX + 6) + "%;"
+      if (this.direction === 1) { 
+        return "top: " + (this.posY - 8) + "%; left: " + (this.posX - 7) + "%; transform: rotate(-20deg);"
+       } else {
+        return "top: " + (this.posY - 8) + "%; left: " + (this.posX + 6) + "%; transform: rotate(20deg);"
+      
     }
-  }
-};
+  },
+}
+}
 </script>
 
 <style scoped>
 .slimechat {
   padding: 5px;
-    position: absolute;
-    border-radius: 10px;
-    border: 1px solid rgba(134, 134, 134, 0.5);
-    max-width: 150px;
-    /* height: 80px; */ 
-    z-index: 6;
-    transition: background-color 1s ease-in-out;
-    transform: rotate(20deg);
-    display: flex;
-    align-items: center;
+  position: absolute;
+  border-radius: 10px;
+  border: 1px solid rgba(134, 134, 134, 0.5);
+  max-width: 150px;
+  /* height: 80px; */
+  z-index: 6;
+  transition: background-color 1s ease-in-out;
+  display: flex;
+  align-items: center;
 }
 
 p {
@@ -119,16 +135,16 @@ p {
 }
 
 .dialog-enter-to {
-transform: scale(1) rotate(20deg);
-opacity: 1;
+  transform: scale(1) rotate(-20deg);
+  opacity: 1;
 }
 
 .dialog-enter-active {
- transition: 0.4s all ease-in-out;
+  transition: 0.4s all ease-in-out;
 }
 
 .dialog-leave-from {
-  transform:rotate(20deg);
+  transform: rotate(-20deg);
   opacity: 1;
 }
 
