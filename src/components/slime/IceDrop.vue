@@ -11,6 +11,29 @@
     </div>
   </div>
 </transition>
+<div v-if="isSnowActive" class="snowwrapper" :style="snowPosition">
+  <div class="snow sn1"></div>
+  <div class="snow sn2"></div>
+  <div class="snow sn3"></div>
+  <div class="snow sn4"></div>
+  <div class="snow sn5"></div>
+  <div class="snow sn6"></div>
+  <div class="snow sn7"></div>
+  <div class="snow sn8"></div>
+  <div class="snow sn9"></div>
+  <div class="snow sn10"></div>
+  <div class="snow sn11"></div>
+  <div class="snow sn12"></div>
+  <div class="snow sn13"></div>
+  <div class="snow sn14"></div>
+  <div class="snow sn15"></div>
+  <div class="snow sn16"></div>
+  <div class="snow sn17"></div>
+  <div class="snow sn18"></div>
+  <div class="snow sn19"></div>
+  <div class="snow sn20"></div>
+
+  </div>
 </template>
 
 <script>
@@ -20,19 +43,28 @@ export default {
     return {
       positionX: 10,
       positionY: 10,
-      isShardActive: false,
+      snowPosX: 10,
+      snowPosY: 10,
+      isSnowActive: false,
       isCubeActive: false,
       isWaterActive: false,
+      isCoolDown: false
     };
   },
   methods: {
     updatePosition(numbX, numbY) {
       this.positionX = 1.5 + numbX + 10 * this.direction;
       this.positionY = numbY + 4;
+      this.snowPosX = numbX + this.direction*5;
+      this.snowPosY = numbY +2;
     },
     castAnimation() {
-      this.isCubeActive = true;
-      setTimeout(() => this.isCubeActive = false, 5000);
+      this.isCoolDown = true;
+      this.isSnowActive = true;
+      setTimeout(() => this.isSnowActive = false, 3000)
+      setTimeout(() => this.isCubeActive = true, 1000);
+      setTimeout(() => this.isCubeActive = false, 6000);
+      setTimeout(() => this.isCoolDown = true, 10000);
     },
     resetSpell() {
       this.$emit("resetSpell");
@@ -42,6 +74,9 @@ export default {
     icePosition() {
       return "top: " + this.positionY + "%; left: " + this.positionX + "%;";
     },
+    snowPosition() {
+      return "top: " + this.snowPosY + "%; left: " + this.snowPosX + "%; transform: scale(" + this.direction*(-1) + ");";
+    }
   },
   watch: {
     iceSpell() {
@@ -54,6 +89,133 @@ export default {
 </script>
 
 <style scoped>
+.snow {
+  background-color: rgba(255, 255, 255, 0.808);
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  position: absolute;
+  animation: snowfall 3s infinite ease-in-out;
+}
+
+@keyframes snowfall {
+  from {
+    transform: translateX(0);
+    
+  }
+
+  to {
+    transform: translateX(-200px);
+  }
+}
+
+.sn1 {
+  right: -10%;
+  top: 2%;
+}
+
+.sn2 {
+  right: -15%;
+  top: 25%;
+}
+
+.sn3 {
+  right: -40%;
+  top: 10%;
+}
+
+.sn4 {
+  right: -30%;
+  top: 30%;
+}
+
+.sn5 {
+  right: -40%;
+  top: 75%;
+}
+
+.sn6 {
+  right: -60%;
+  top: 15%;
+}
+
+.sn7 {
+  right: -80%;
+  top: 90%;
+}
+
+.sn8 {
+  right: -80%;
+  top: 10%;
+}
+
+.sn9 {
+  right: -60%;
+  top: 50%;
+}
+
+.sn10 {
+  right: -90%;
+  top: 90%;
+}
+
+.sn11 {
+  right: -20%;
+  top: 75%;
+}
+
+.sn12 {
+  right: -50%;
+  top: 50%;
+}
+
+.sn13 {
+  right: -30%;
+  top: 70%;
+}
+
+.sn14 {
+  right: -80%;
+  top: 50%;
+}
+
+.sn15 {
+  right: -12%;
+  top: 80%;
+}
+
+.sn16 {
+  right: -12%;
+  top: 45%;
+}
+
+.sn17 {
+  right: -70%;
+  top: 30%;
+}
+
+.sn18 {
+  right: -60%;
+  top: 90%;
+}
+
+.sn19 {
+  right: -30%;
+  top: 95%;
+}
+
+.sn20 {
+  right: -35%;
+  top: 60%;
+}
+
+.snowwrapper {
+  height: 40px;
+  width: 100px;
+  position: absolute;
+  overflow: clip;
+}
+
 .icecube-enter-from {
   opacity: 0;
   transform: scale(0.3);
