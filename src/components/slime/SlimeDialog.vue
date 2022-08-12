@@ -1,7 +1,10 @@
 <template>
+  Cooldown:{{ isCoolDown }}
+  <br />
+  isTalking: {{ isTalking }}
   <transition name="dialog">
     <div
-      v-if="fireSpell"
+      v-if="isTalking"
       class="slimechat"
       :class="color"
       :style="dialogPosition"
@@ -14,11 +17,16 @@
 <script>
 export default {
   inject: ["color"],
-  props: ["posY", "posX", "direction", "fireSpell"],
+  props: ["posY", "posX", "direction", "isTalking", "isCoolDown"],
   data() {
     return {
       color: this.color,
       slimePhrase: "",
+      coolDownPhrase: {
+        red: "I need to recharge my fire.",
+        green: "Let's save energy for later.",
+        blue: "It's on cooldown. Keep it slow.",
+      },
       idlePhrases: {
         red: [
           "Let's put everything on fire! hehehe!",
@@ -62,11 +70,25 @@ export default {
     };
   },
   watch: {
-    fireSpell() {
-      this.displayActionDialog();
+    isTalking() {
+      if (this.isCoolDown === true) {
+        this.coolDownDialog();
+        return;
+      } else {
+        this.displayActionDialog();
+      }
     },
   },
   methods: {
+    coolDownDialog() {
+      if (this.color.value === "blue") {
+        this.slimePhrase = this.coolDownPhrase.blue;
+      } else if (this.color.value === "red") {
+        this.slimePhrase = this.coolDownPhrase.red;
+      } else {
+        this.slimePhrase = this.coolDownPhrase.green;
+      }
+    },
     displayActionDialog() {
       if (this.color.value === "blue") {
         this.slimePhrase =
@@ -81,15 +103,26 @@ export default {
   },
   computed: {
     dialogPosition() {
-      if (this.direction === 1) { 
-        return "top: " + (this.posY - 8) + "%; left: " + (this.posX - 7) + "%; transform: rotate(-20deg);"
-       } else {
-        return "top: " + (this.posY - 8) + "%; left: " + (this.posX + 6) + "%; transform: rotate(20deg);"
-      
-    }
+      if (this.direction === 1) {
+        return (
+          "top: " +
+          (this.posY - 8) +
+          "%; left: " +
+          (this.posX - 7) +
+          "%; transform: rotate(-20deg);"
+        );
+      } else {
+        return (
+          "top: " +
+          (this.posY - 8) +
+          "%; left: " +
+          (this.posX + 6) +
+          "%; transform: rotate(20deg);"
+        );
+      }
+    },
   },
-}
-}
+};
 </script>
 
 <style scoped>

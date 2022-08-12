@@ -1,9 +1,10 @@
 <template>
 <slime-dialog 
+    :isCoolDown="isCoolDown"
     :posX="positionX"
     :posY="positionY"
     :direction="slimeDirection"
-    :fireSpell="isTalking"></slime-dialog>
+    :isTalking="isTalking"></slime-dialog>
   <after-burn
     :posX="positionX"
     :posY="positionY"
@@ -67,7 +68,8 @@ export default {
       fireSpell: false,
       plantSpell: false,
       iceSpell: false,
-      isTalking: false
+      isTalking: false,
+      isCoolDown: false
     };
   },
   mounted() {
@@ -77,6 +79,15 @@ export default {
     window.addEventListener("keyup", this.slowFloatTime);
   },
   methods: {
+    coolDownDialog() {
+      this.isTalking = false;
+      this.isTalking = true;
+      this.isCoolDown = false;
+      this.isCoolDown = true;
+      
+      // setTimeout(() => this.isTalking = false, 3000);
+      setTimeout(() => this.isTalking = false, 1000);
+    },
     resetSpell(el) {
       if(el === 'fire') {
         setTimeout(() => this.fireSpell = false, 10000);
@@ -86,11 +97,11 @@ export default {
         setTimeout(() => this.plantSpell = false, 10000);
       }
     },
-    trueResetSpell() {
-      this.fireSpell = false;
-      this.plantSpell = false;
-      this.iceSpell = false;
-    },
+    // trueResetSpell() {
+    //   this.fireSpell = false;
+    //   this.plantSpell = false;
+    //   this.iceSpell = false;
+    // },
     fastFloatTime(e) {
       const keyCode = String(e.keyCode || e.code || e.keyIdentifier);
       if (
@@ -130,14 +141,21 @@ export default {
       }
     },
     castSpell() {
-      setTimeout(() => this.isTalking = true, 1500);
-      setTimeout(() => this.isTalking = false, 5000);
+      if (this.isCoolDown === true) {
+        this.isTalking = false;
+        this.isTalking = true;
+      }
+        setTimeout(() => this.isTalking = true, 1500);
+        setTimeout(() => this.isCoolDown = true, 2000);
+        setTimeout(() => this.isTalking = false, 3000);
+        setTimeout(() => this.isCoolDown = false, 10000);
+      
+      
       if(this.color.value === "red") {
       this.fireSpell = true;
       } else if (this.color.value === "blue") {
         this.iceSpell = true;
       } else {
-        console.log("casSpellreached")
         this.plantSpell = true;
       }
     },

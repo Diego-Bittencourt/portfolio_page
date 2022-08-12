@@ -1,5 +1,4 @@
 <template>
-{{iceSpell}}
 <transition name="icecube">
   <div v-if="isCubeActive" class="icewrapper" :style="icePosition">
     <div class="outerwrapper">
