@@ -57,9 +57,9 @@ export default {
       this.isBallActive = true;
       setTimeout(() => this.isBallActive = false, 2000);
       setTimeout(() => this.isFlameActive = true, 1000);
-      setTimeout(() => this.isFlameActive = false, 3000);
+      setTimeout(() => this.isFlameActive = false, 6000);
       setTimeout(() => this.isBurnActive = true, 3000);
-      setTimeout(() => this.isBurnActive = false, 5000);
+      setTimeout(() => this.isBurnActive = false, 9000);
     },
     resetSpell() {
       this.$emit("resetSpell");
@@ -92,6 +92,9 @@ export default {
   },
   watch: {
     fireSpell(val) {
+      if (val === false) {
+        return
+      }
       this.updatePosition(this.posY, this.posX);
       this.castFireBall(this.posY, this.posX);
       this.flameActivate(this.posY, this.posX);

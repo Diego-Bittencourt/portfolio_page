@@ -58,10 +58,10 @@ export default {
       this.isSeedActive = true;
       setTimeout(() => (this.isSeedActive = false), 2000);
       setTimeout(() => (this.isPlantActive = true), 3000);
-      setTimeout(() => (this.isPlantActive = false), 7000);
+      setTimeout(() => (this.isPlantActive = false), 9000);
       setTimeout(() => (this.isFlowerActive = true), 5000);
-      setTimeout(() => (this.isFlowerActive = false), 7000);
-      setTimeout(() => (this.isGroundActive = false), 7000);
+      setTimeout(() => (this.isFlowerActive = false), 9000);
+      setTimeout(() => (this.isGroundActive = false), 9000);
     },
   },
   computed: {
@@ -70,7 +70,10 @@ export default {
     },
   },
   watch: {
-    plantSpell() {
+    plantSpell(val) {
+      if (val === false) {
+        return
+      }
       this.updatePosition(this.posY, this.posX);
       this.castAnimation();
       this.resetSpell();

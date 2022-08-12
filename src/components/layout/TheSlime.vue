@@ -9,21 +9,21 @@
     :posY="positionY"
     :direction="slimeDirection"
     :fireSpell="fireSpell"
-    @resetSpell="resetSpell"
+    @resetSpell="resetSpell('fire')"
   ></after-burn>
   <plant-seed
   :posX="positionX"
   :posY="positionY"
   :direction="slimeDirection"
   :plantSpell="plantSpell"
-  @resetSpell="resetSpell"
+  @resetSpell="resetSpell('plant')"
   ></plant-seed>
   <ice-drop
   :posX="positionX"
   :posY="positionY"
   :direction="slimeDirection"
   :iceSpell="iceSpell"
-  @resetSpell="resetSpell"
+  @resetSpell="resetSpell('ice')"
   ></ice-drop>
   <div class="slimewrapper" :style="moveSlime">
     <div class="slimeoutlayer" :style="slimeFloat">
@@ -77,8 +77,14 @@ export default {
     window.addEventListener("keyup", this.slowFloatTime);
   },
   methods: {
-    resetSpell() {
-      setTimeout(this.trueResetSpell, 100);
+    resetSpell(el) {
+      if(el === 'fire') {
+        setTimeout(() => this.fireSpell = false, 10000);
+      } else if (el === 'ice') {
+        setTimeout(() => this.iceSpell = false, 10000);
+      } else if (el === 'plant') {
+        setTimeout(() => this.plantSpell = false, 10000);
+      }
     },
     trueResetSpell() {
       this.fireSpell = false;

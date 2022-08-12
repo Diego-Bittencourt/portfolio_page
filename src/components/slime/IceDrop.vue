@@ -1,4 +1,5 @@
 <template>
+{{iceSpell}}
 <transition name="icecube">
   <div v-if="isCubeActive" class="icewrapper" :style="icePosition">
     <div class="outerwrapper">
@@ -47,8 +48,7 @@ export default {
       snowPosY: 10,
       isSnowActive: false,
       isCubeActive: false,
-      isWaterActive: false,
-      isCoolDown: false
+      isWaterActive: false
     };
   },
   methods: {
@@ -59,12 +59,10 @@ export default {
       this.snowPosY = numbY +2;
     },
     castAnimation() {
-      this.isCoolDown = true;
       this.isSnowActive = true;
       setTimeout(() => this.isSnowActive = false, 3000)
       setTimeout(() => this.isCubeActive = true, 1000);
-      setTimeout(() => this.isCubeActive = false, 6000);
-      setTimeout(() => this.isCoolDown = true, 10000);
+      setTimeout(() => this.isCubeActive = false, 8000);
     },
     resetSpell() {
       this.$emit("resetSpell");
@@ -79,7 +77,10 @@ export default {
     }
   },
   watch: {
-    iceSpell() {
+    iceSpell(val) {
+      if (val === false) {
+        return
+      }
       this.updatePosition(this.posX, this.posY);
       this.castAnimation();
       this.resetSpell();
