@@ -215,6 +215,7 @@ export default {
   width: 100px;
   position: absolute;
   overflow: clip;
+  z-index: 5;
 }
 
 .icecube-enter-from {

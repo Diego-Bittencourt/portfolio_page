@@ -1,7 +1,4 @@
 <template>
-  {{ dialogPosition }}
-  {{typeof direction}}
-  {{this.direction}}
   <transition name="dialog">
     <div
       v-if="fireSpell"
