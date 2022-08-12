@@ -1,5 +1,6 @@
 <template>
-  <div class="icewrapper" :style="icePosition">
+<transition name="icecube">
+  <div v-if="isCubeActive" class="icewrapper" :style="icePosition">
     <div class="outerwrapper">
       <div class="bottomwall cubewall"></div>
       <div class="topwall cubewall"></div>
@@ -9,6 +10,7 @@
       <div class="frontwall cubewall"></div>
     </div>
   </div>
+</transition>
 </template>
 
 <script>
@@ -28,7 +30,10 @@ export default {
       this.positionX = 1.5 + numbX + 10 * this.direction;
       this.positionY = numbY + 4;
     },
-    castAnimation() {},
+    castAnimation() {
+      this.isCubeActive = true;
+      setTimeout(() => this.isCubeActive = false, 5000);
+    },
     resetSpell() {
       this.$emit("resetSpell");
     },
@@ -49,6 +54,32 @@ export default {
 </script>
 
 <style scoped>
+.icecube-enter-from {
+  opacity: 0;
+  transform: scale(0.3);
+}
+
+.icecube-enter-to {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.icecube-enter-active {
+  transition: 2s all ease-in;
+}
+
+.icecube-leave-from {
+  transform: scaleY(1);
+}
+
+.icecube-leave-to {
+  transform: scaleY(0);
+}
+
+.icecube-leave-active {
+  transition: 3s all ease-out;
+}
+
 .icewrapper {
   width: 50px;
   height: 50px;
