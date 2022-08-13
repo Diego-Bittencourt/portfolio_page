@@ -49,6 +49,7 @@ export default {
     updatePosition(numbY, numbX) {
       this.positionY = numbY - 2;
       this.positionX = 1 + numbX + 12 * this.direction;
+      this.$emit('plantposition', {element: 'plant', plantX: this.positionX, plantY: this.positionY})
     },
     resetSpell() {
       this.$emit("resetSpell");

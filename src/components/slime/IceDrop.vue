@@ -56,6 +56,7 @@ export default {
       this.positionY = numbY + 4;
       this.snowPosX = numbX + this.direction*5;
       this.snowPosY = numbY +2;
+      this.$emit('cubeposition', {element: 'ice', iceX: this.positionX, iceY: this.positionY})
     },
     castAnimation() {
       this.isSnowActive = true;

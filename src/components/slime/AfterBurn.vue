@@ -69,13 +69,13 @@ export default {
       this.positionX = 3 + numbX + 10 * this.direction;
     },
     castFireBall(numbY, numbX) {
-      console.log(numbY, numbX);
       this.fireBallX = 4.8 + numbX + 10 * this.direction;
       this.fireBallY = 3.7 + numbY;
     },
     flameActivate(numbY, numbX) {
       this.flameX = 3.7 + numbX + 10 * this.direction;
       this.flameY = numbY;
+      this.$emit('fireposition', {element: 'fire', posX: this.flameX, posY: this.flameY})
     },
   },
   computed: {

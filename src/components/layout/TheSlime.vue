@@ -11,6 +11,7 @@
     :direction="slimeDirection"
     :fireSpell="fireSpell"
     @resetSpell="resetSpell('fire')"
+    @fireposition="handleReaction"
   ></after-burn>
   <plant-seed
   :posX="positionX"
@@ -18,6 +19,7 @@
   :direction="slimeDirection"
   :plantSpell="plantSpell"
   @resetSpell="resetSpell('plant')"
+  @plantposition="handleReaction"
   ></plant-seed>
   <ice-drop
   :posX="positionX"
@@ -25,6 +27,7 @@
   :direction="slimeDirection"
   :iceSpell="iceSpell"
   @resetSpell="resetSpell('ice')"
+  @cubeposition="handleReaction"
   ></ice-drop>
   <div class="slimewrapper" :style="moveSlime">
     <div class="slimeoutlayer" :style="slimeFloat">
@@ -69,7 +72,15 @@ export default {
       plantSpell: false,
       iceSpell: false,
       isTalking: false,
-      isCoolDown: false
+      isCoolDown: false,
+      reactionHandler: {
+        flameX: null,
+        flameY: null,
+        iceX: null,
+        iceY: null,
+        plantX: null,
+        plantY: null
+      }
     };
   },
   mounted() {
@@ -79,6 +90,21 @@ export default {
     window.addEventListener("keyup", this.slowFloatTime);
   },
   methods: {
+    handleReaction(payload) {
+      if (payload.element === 'fire') {
+        console.log("fire", payload)
+      this.reactionHandler.flameX = payload.flameX;
+      this.reactionHandler.flameY = payload.flameY;
+      } else if (payload.element === 'ice') {
+        console.log('ice', payload)
+        this.reactionHandler.iceX = payload.iceX;
+        this.reactionHandler.iceY = payload.iceY;
+      } else if (payload.element === 'plant') {
+        console.log('plant', payload)
+        this.reactionHandler.plantX = payload.plantX;
+        this.reactionHandler.plantY = payload.plantY;
+      }
+    }, 
     coolDownDialog() {
       this.isTalking = false;
       this.isTalking = true;
@@ -97,11 +123,6 @@ export default {
         setTimeout(() => this.plantSpell = false, 10000);
       }
     },
-    // trueResetSpell() {
-    //   this.fireSpell = false;
-    //   this.plantSpell = false;
-    //   this.iceSpell = false;
-    // },
     fastFloatTime(e) {
       const keyCode = String(e.keyCode || e.code || e.keyIdentifier);
       if (
