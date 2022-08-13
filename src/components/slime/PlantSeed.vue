@@ -1,4 +1,5 @@
 <template>
+Child burn: {{this.plantBurn}}
   <div class="plantwrapper" :style="seedPosition">
     <div class="plantoverlayer">
       <transition name="seed">
@@ -6,11 +7,11 @@
       </transition>
       <transition name="greenplant">
         <div v-if="isPlantActive" class="greenPart">
-          <div class="stem"></div>
-          <div class="leaf lf1"></div>
-          <div class="leaf lf2"></div>
-          <div class="leaf lf3"></div>
-          <div class="leaf lf4"></div>
+          <div class="stem" :style="stemLeafColor"></div>
+          <div class="leaf lf1" :style="stemLeafColor"></div>
+          <div class="leaf lf2" :style="stemLeafColor"></div>
+          <div class="leaf lf3" :style="stemLeafColor"></div>
+          <div class="leaf lf4" :style="stemLeafColor"></div>
         </div>
       </transition>
       <transition name="ground">
@@ -34,7 +35,7 @@
 
 <script>
 export default {
-  props: ["posY", "posX", "direction", "plantSpell"],
+  props: ["posY", "posX", "direction", "plantSpell", "plantBurn"],
   data() {
     return {
       positionY: 10,
@@ -69,6 +70,13 @@ export default {
     seedPosition() {
       return "top: " + this.positionY + "%; left: " + this.positionX + "%;";
     },
+    stemLeafColor() {
+      if (this.plantBurn === true) {
+        return "background-color: black;"
+      } else {
+        return "background-color: green;"
+      }
+    }
   },
   watch: {
     plantSpell(val) {
@@ -183,7 +191,7 @@ export default {
   width: 8%;
   height: 70%;
   margin-top: 30%;
-  background-color: green;
+  /* background-color: green; */
   position: absolute;
   left: 47%;
   top: 0;
@@ -196,7 +204,7 @@ export default {
   width: 20%;
   position: absolute;
   border: 1px solid rgb(87, 77, 47);
-  background-color: green;
+  /* background-color: green; */
 }
 
 .lf1 {

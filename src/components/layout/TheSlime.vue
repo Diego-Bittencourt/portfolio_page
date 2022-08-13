@@ -1,6 +1,6 @@
 <template>
       {{reactionHandler}}
-
+  tá queimando: {{isPlantBurn}}
 <slime-dialog 
     :isCoolDown="isCoolDown"
     :posX="positionX"
@@ -16,6 +16,7 @@
     @fireposition="handleReaction"
   ></after-burn>
   <plant-seed
+  :plantBurn="isPlantBurn"
   :posX="positionX"
   :posY="positionY"
   :direction="slimeDirection"
@@ -97,14 +98,17 @@ export default {
         console.log("fire", payload)
       this.reactionHandler.flameX = payload.flameX;
       this.reactionHandler.flameY = payload.flameY;
+      setTimeout(() => {this.reactionHandler.flameX = null; this.reactionHandler.flameY = null}, 10000)
       } else if (payload.element === 'ice') {
         console.log('ice', payload)
         this.reactionHandler.iceX = payload.iceX;
         this.reactionHandler.iceY = payload.iceY;
+        setTimeout(() => {this.reactionHandler.iceX = null; this.reactionHandler.iceY = null}, 10000)
       } else if (payload.element === 'plant') {
         console.log('plant', payload)
         this.reactionHandler.plantX = payload.plantX;
         this.reactionHandler.plantY = payload.plantY;
+        setTimeout(() => {this.reactionHandler.plantX = null; this.reactionHandler.plantY = null}, 10000)
       }
     }, 
     coolDownDialog() {
@@ -184,6 +188,14 @@ export default {
     },
   },
   computed: {
+    isPlantBurn() {
+      if (Math.abs(this.reactionHandler.flameX - this.reactionHandler.plantX) < 10 &&
+          Math.abs(this.reactionHandler.flameY - this.reactionHandler.plantY) < 10) {
+            return true;
+          } else {
+            return false;
+          }
+    },
     lefteyeshape() {
       if (this.color.value === "red") {
         return "leftredeyes";

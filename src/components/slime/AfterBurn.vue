@@ -57,7 +57,7 @@ export default {
       this.isBallActive = true;
       setTimeout(() => this.isBallActive = false, 2000);
       setTimeout(() => this.isFlameActive = true, 1000);
-      setTimeout(() => this.isFlameActive = false, 6000);
+      setTimeout(() => this.isFlameActive = false, 7000);
       setTimeout(() => this.isBurnActive = true, 3000);
       setTimeout(() => this.isBurnActive = false, 9000);
     },
