@@ -75,7 +75,7 @@ export default {
     flameActivate(numbY, numbX) {
       this.flameX = 3.7 + numbX + 10 * this.direction;
       this.flameY = numbY;
-      this.$emit('fireposition', {element: 'fire', posX: this.flameX, posY: this.flameY})
+      this.$emit('fireposition', {element: 'fire', flameX: this.flameX, flameY: this.flameY})
     },
   },
   computed: {

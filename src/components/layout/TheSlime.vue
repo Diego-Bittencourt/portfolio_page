@@ -1,4 +1,6 @@
 <template>
+      {{reactionHandler}}
+
 <slime-dialog 
     :isCoolDown="isCoolDown"
     :posX="positionX"
