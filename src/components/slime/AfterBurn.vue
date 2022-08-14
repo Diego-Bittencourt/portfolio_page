@@ -1,7 +1,4 @@
 <template>
-  <transition name="fireball">
-    <div v-if="isBallActive" class="fireball" :style="fireBallPosition"></div>
-  </transition>
   <transition name="flame">
     <div v-if="isFlameActive" class="flamewrapper" :style="flamePosition">
       <div class="innerflamewrapper">
@@ -43,8 +40,6 @@ export default {
       positionX: 10,
       positionY: 10,
       slimeDirection: 1,
-      fireBallX: 10,
-      fireBallY: 10,
       flameX: 10,
       flameY: 10,
       isBallActive: false,
@@ -54,9 +49,7 @@ export default {
   },
   methods: {
     castAnimation() {
-      this.isBallActive = true;
-      setTimeout(() => this.isBallActive = false, 2000);
-      setTimeout(() => this.isFlameActive = true, 1000);
+      this.isFlameActive = true;
       setTimeout(() => this.isFlameActive = false, 7000);
       setTimeout(() => this.isBurnActive = true, 3000);
       setTimeout(() => this.isBurnActive = false, 9000);
@@ -68,10 +61,6 @@ export default {
       this.positionY = numbY + 7;
       this.positionX = 3 + numbX + 10 * this.direction;
     },
-    castFireBall(numbY, numbX) {
-      this.fireBallX = 4.8 + numbX + 10 * this.direction;
-      this.fireBallY = 3.7 + numbY;
-    },
     flameActivate(numbY, numbX) {
       this.flameX = 3.7 + numbX + 10 * this.direction;
       this.flameY = numbY;
@@ -81,10 +70,6 @@ export default {
   computed: {
     burnPosition() {
       return "top: " + this.positionY + "%; left: " + this.positionX + "%;";
-    },
-    fireBallPosition() {
-      console.log("positao", this.fireBallY);
-      return "top: " + this.fireBallY + "%; left: " + this.fireBallX + "%;";
     },
     flamePosition() {
       return "top: " + this.flameY + "%; left: " + this.flameX + "%;";
@@ -96,7 +81,6 @@ export default {
         return
       }
       this.updatePosition(this.posY, this.posX);
-      this.castFireBall(this.posY, this.posX);
       this.flameActivate(this.posY, this.posX);
       this.castAnimation();
       this.resetSpell();
@@ -107,26 +91,6 @@ export default {
 </script>
 
 <style scoped>
-.fireball-enter-from {
-  transform: translateY(-60px);
-  opacity: 0;
-}
-
-.fireball-enter-to,
-.fireball-leave-from {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.fireball-enter-active,
-.fireball-leave-active {
-  transition: all 1s ease-in;
-}
-
-.fireball-leave-to {
-  opacity: 0;
-}
-
 .flame-enter-from {
   transform: scaleY(0) translateY(60px);
   opacity: 0;
@@ -170,7 +134,7 @@ export default {
   height: 50px;
   width: 50px;
   position: absolute;
-  z-index: 5;
+  z-index: 7;
 }
 
 .innerflamewrapper {
