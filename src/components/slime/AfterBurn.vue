@@ -1,11 +1,12 @@
 <template>
+{{this.isFlameFrozen}}
   <transition name="flame">
     <div v-if="isFlameActive" class="flamewrapper" :style="flamePosition">
       <div class="innerflamewrapper">
-        <div class="flame redflame"></div>
-        <div class="flame pinkflame"></div>
-        <div class="flame orangeflame"></div>
-        <div class="flame yellowflame"></div>
+        <div class="flame redflame" :style="firstFlame"></div>
+        <div class="flame pinkflame" :style="secondFlame"></div>
+        <div class="flame orangeflame" :style="thirdFlame"></div>
+        <div class="flame yellowflame" :style="fourthFlame"></div>
         <div class="flame whiteflame"></div>
         <div class="base blueflame"></div>
         <div class="base blackflam"></div>
@@ -32,7 +33,7 @@
 
 <script>
 export default {
-  props: ["posX", "posY", "direction", "fireSpell"],
+  props: ["posX", "posY", "direction", "fireSpell", "isFlameFrozen"],
   emits: ["resetSpell"],
   data() {
     return {
@@ -68,6 +69,34 @@ export default {
     },
   },
   computed: {
+    firstFlame() {
+      if(this.isFlameFrozen === true) {
+        return "background-color: #007369; box-shadow: 0px 0px 6px 2px #007369"
+      } else {
+        return "background-color: red; box-shadow: 0px 0px 8px 3px red;"
+      }
+    },
+    secondFlame() {
+      if(this.isFlameFrozen === true) {
+        return "background-color: #25baae; box-shadow: 0px 0px 6px 2px #25baae"
+      } else {
+        return "background-color: rgb(236, 99, 207); box-shadow: 0px 0px 10px 3px rgb(236, 99, 207);"
+      }
+    },
+    thirdFlame() {
+      if(this.isFlameFrozen === true) {
+        return "background-color: #7bdbd3; box-shadow: 0px 0px 6px 2px #7bdbd3"
+      } else {
+        return "background-color: orangered; box-shadow: 0px 0px 8px 3px orangered;"
+      }
+    },
+    fourthFlame() {
+      if(this.isFlameFrozen === true) {
+        return "background-color: #bef7f2; box-shadow: 0px 0px 6px 2px #bef7f2"
+      } else {
+        return "background-color: yellow; box-shadow: 0px 0px 6px 2px yellow;"
+      }
+    },
     burnPosition() {
       return "top: " + this.positionY + "%; left: " + this.positionX + "%;";
     },
@@ -128,7 +157,6 @@ export default {
 }
 
 
-
 .flamewrapper {
   opacity: 0.7;
   height: 50px;
@@ -181,28 +209,20 @@ export default {
   box-shadow: 0px 0px 9px 2px white;
 }
 .yellowflame {
-  background-color: yellow;
   width: 50%;
   height: 50%;
-  box-shadow: 0px 0px 6px 2px yellow;
 }
 .orangeflame {
-  background-color: orangered;
   width: 70%;
   height: 70%;
-  box-shadow: 0px 0px 8px 3px orangered;
 }
 .pinkflame {
-  background-color: rgb(236, 99, 207);
   width: 85%;
   height: 85%;
-  box-shadow: 0px 0px 10px 3px rgb(236, 99, 207);
 }
 .redflame {
-  background-color: red;
   width: 100%;
   height: 100%;
-  box-shadow: 0px 0px 8px 3px red;
 }
 
 .blueflame {

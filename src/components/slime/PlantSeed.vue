@@ -1,5 +1,4 @@
 <template>
-plant frozen: {{this.isPlantFrozen}}
   <div class="plantwrapper" :style="seedPosition">
     <div class="plantoverlayer">
       <transition name="seed">

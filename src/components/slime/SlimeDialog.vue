@@ -1,7 +1,4 @@
 <template>
-  Cooldown:{{ isCoolDown }}
-  <br />
-  isTalking: {{ isTalking }}
   <transition name="dialog">
     <div
       v-if="isTalking"

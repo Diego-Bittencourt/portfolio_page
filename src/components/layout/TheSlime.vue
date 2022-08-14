@@ -1,6 +1,4 @@
 <template>
-      {{reactionHandler}}
-  tá queimando: {{isPlantBurn}}
 <slime-dialog 
     :isCoolDown="isCoolDown"
     :posX="positionX"
@@ -8,6 +6,7 @@
     :direction="slimeDirection"
     :isTalking="isTalking"></slime-dialog>
   <after-burn
+    :isFlameFrozen="isFlameFrozen"
     :posX="positionX"
     :posY="positionY"
     :direction="slimeDirection"
@@ -189,6 +188,14 @@ export default {
     },
   },
   computed: {
+    isFlameFrozen() {
+      if (Math.abs(this.reactionHandler.flameX - this.reactionHandler.iceX) < 5 &&
+          Math.abs(this.reactionHandler.flameY - this.reactionHandler.iceY) < 10) {
+            return true;
+          } else {
+            return false;
+          }
+    },
     isPlantBurn() {
       if (Math.abs(this.reactionHandler.flameX - this.reactionHandler.plantX) < 5 &&
           Math.abs(this.reactionHandler.flameY - this.reactionHandler.plantY) < 5) {
