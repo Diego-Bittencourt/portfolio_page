@@ -1,5 +1,5 @@
 <template>
-Child burn: {{this.plantBurn}}
+plant frozen: {{this.isPlantFrozen}}
   <div class="plantwrapper" :style="seedPosition">
     <div class="plantoverlayer">
       <transition name="seed">
@@ -35,7 +35,7 @@ Child burn: {{this.plantBurn}}
 
 <script>
 export default {
-  props: ["posY", "posX", "direction", "plantSpell", "plantBurn"],
+  props: ["posY", "posX", "direction", "plantSpell", "plantBurn", "isPlantFrozen"],
   data() {
     return {
       positionY: 10,
@@ -73,7 +73,10 @@ export default {
     stemLeafColor() {
       if (this.plantBurn === true) {
         return "background-color: black;"
-      } else {
+      } else if (this.isPlantFrozen === true) {
+        return "background-color: blue;"
+      }
+      else {
         return "background-color: green;"
       }
     }

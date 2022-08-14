@@ -16,6 +16,7 @@
     @fireposition="handleReaction"
   ></after-burn>
   <plant-seed
+  :isPlantFrozen="isPlantFrozen"
   :plantBurn="isPlantBurn"
   :posX="positionX"
   :posY="positionY"
@@ -189,8 +190,16 @@ export default {
   },
   computed: {
     isPlantBurn() {
-      if (Math.abs(this.reactionHandler.flameX - this.reactionHandler.plantX) < 10 &&
-          Math.abs(this.reactionHandler.flameY - this.reactionHandler.plantY) < 10) {
+      if (Math.abs(this.reactionHandler.flameX - this.reactionHandler.plantX) < 5 &&
+          Math.abs(this.reactionHandler.flameY - this.reactionHandler.plantY) < 5) {
+            return true;
+          } else {
+            return false;
+          }
+    },
+    isPlantFrozen() {
+      if (Math.abs(this.reactionHandler.iceX - this.reactionHandler.plantX) < 5 &&
+          Math.abs(this.reactionHandler.iceY - this.reactionHandler.plantY) < 10) {
             return true;
           } else {
             return false;
