@@ -3,15 +3,15 @@
     <ul>
       <li><h2>Links:</h2></li>
       <li>
-        <base-button outlink>
-          <font-awesome-icon icon="fa-brands fa-linkedin" />
-          <h4>linkedin</h4>
+        <base-button outlink receivedlink="https://github.com/Diego-Bittencourt/">
+          <font-awesome-icon icon="fa-brands fa-github" />
+          <h4>GitHub</h4>
         </base-button>
       </li>
       <li>
-        <base-button outlink>
-          <font-awesome-icon icon="fa-brands fa-github" />
-          <h4>GitHub</h4>
+        <base-button outlink receivedlink="https://www.linkedin.com/in/diego-bittencourt-mendes-5b3898a8/">
+          <font-awesome-icon icon="fa-brands fa-linkedin" />
+          <h4>LinkedIn</h4>
         </base-button>
       </li>
       <li>
