@@ -25,6 +25,7 @@
   @plantposition="handleReaction"
   ></plant-seed>
   <ice-drop
+  :isFlameFrozen="isFlameFrozen"
   :posX="positionX"
   :posY="positionY"
   :direction="slimeDirection"
@@ -341,11 +342,11 @@ export default {
 }
 
 .red {
-  background-color: red;
+  background-color: #ff1c14;
 }
 
 .blue {
-  background: blue;
+  background: #71c7f0;
 }
 
 .eye {

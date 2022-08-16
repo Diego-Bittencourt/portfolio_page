@@ -1,7 +1,8 @@
 <template>
+flame frozen: {{isFlameFrozen}}
 <transition name="icecube">
   <div v-if="isCubeActive" class="icewrapper" :style="icePosition">
-    <div class="outerwrapper">
+    <div v-if="isFlameFrozen === false" class="outerwrapper">
       <div class="bottomwall cubewall"></div>
       <div class="topwall cubewall"></div>
       <div class="backwall cubewall"></div>
@@ -38,7 +39,7 @@
 
 <script>
 export default {
-  props: ["posX", "posY", "direction", "iceSpell"],
+  props: ["posX", "posY", "direction", "iceSpell", "isFlameFroze"],
   data() {
     return {
       positionX: 10,

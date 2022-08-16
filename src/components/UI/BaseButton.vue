@@ -90,23 +90,23 @@ a:hover {
 
 .green:hover {
   transition: 0.1s;
-  background-color: #67b658;
-  border-color: #67b658;
+  background-color: #4bb020;
+  border-color: #66ed9e;
   transition: all 0.3s ease-in; 
   
 }
 
 .red:hover {
   transition: 0.1s;
-  background-color: rgb(190, 60, 60);
-  border-color: rgb(190, 60, 60);
+  background-color: #ff1c14;
+  border-color: #ed8e09;
   transition: all 0.3s ease-in; 
 }
 
 .blue:hover {
   transition: 0.1s;
-  background-color: rgb(36, 36, 179);
-  border-color: rgb(36, 36, 179);
+  background-color: #534094;
+  border-color: #71c7f0;
   transition: all 0.3s ease-in; 
 }
 

@@ -32,14 +32,14 @@ export default {
 }
 
 .blue:hover {
-    box-shadow: 0 8px 10px blue;
+    box-shadow: 0 8px 10px #534094;
 }
 
 .red:hover {
-    box-shadow: 0 8px 10px red;
+    box-shadow: 0 8px 10px #ff1c14;
 }
 
 .green:hover {
-    box-shadow: 0 8px 10px green;
+    box-shadow: 0 8px 10px #4bb020;
 }
 </style>

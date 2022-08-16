@@ -201,15 +201,15 @@ li:hover .skilltext {
 }
 
 .greencard {
-  background-color: #65c777;
+  background-color: #4bb020;
 }
 
 .redcard {
-  background-color: rgb(216, 71, 71);
+  background-color: #ff1c14;
 }
 
 .bluecard {
-  background-color:rgb(58, 58, 206);
+  background-color:#534094;
 }
 
 

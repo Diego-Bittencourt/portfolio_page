@@ -143,7 +143,7 @@ h1 {
 }
 
 .blueselector {
-  background-color: rgb(36, 36, 179);
+  background-color: #534094;
   border: 2px solid #d6d6d6;
   transition: 0.5s;
 }
@@ -155,20 +155,20 @@ h1 {
 }
 
 .redselector {
-  background-color: rgb(190, 60, 60);
+  background-color: #ff1c14;
   border: 2px solid #d6d6d6;
   transition: 0.5s;
 }
 
 .blueselector:hover {
-  box-shadow: 0 0 10px 10px rgba(137, 43, 226, 0.61);
+  box-shadow: 0 0 10px 10px #534094;
 }
 
 .greenselector:hover {
-  box-shadow: 0 0 10px 10px rgba(0, 221, 0, 0.63);
+  box-shadow: 0 0 10px 10px #4d9c5b;
 }
 
 .redselector:hover {
-  box-shadow: 0 0 10px 10px rgba(223, 61, 61, 0.603);
+  box-shadow: 0 0 10px 10px #ff1c14;
 }
 </style>
