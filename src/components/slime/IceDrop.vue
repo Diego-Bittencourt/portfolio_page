@@ -1,5 +1,4 @@
 <template>
-is it frozen{{isFlameFrozen}}
 <transition name="icecube">
   <div v-if="isCubeActive" class="icewrapper" :style="icePosition">
     <div v-if="this.isFlameFrozen === false" class="outerwrapper">
@@ -55,7 +54,7 @@ export default {
     updatePosition(numbX, numbY) {
       this.positionX = 1.5 + numbX + 12 * this.direction;
       this.positionY = numbY + 4;
-      this.snowPosX = numbX + this.direction*8;
+      this.snowPosX = numbX + this.direction*7;
       this.snowPosY = numbY +2;
       this.$emit('cubeposition', {element: 'ice', iceX: this.positionX, iceY: this.positionY})
     },

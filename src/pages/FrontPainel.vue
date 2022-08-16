@@ -1,14 +1,13 @@
 <template>
   <div class="frontpainelwrapper">
-    <div class="frontcard frontlogo" :class="bkgroundcolor">
+    <div class="frontcard frontlogo" >
       <div class="descriptiontext">
-      <p>I'm a Front-end Software Developer based in Japan.</p>
-      <p>
-        I'm passionate about using my problem-solving skills to help people.
-      </p>
-      <p>I have a positive attitude and I'm always up to learn something new.</p>
-    </div>
-    <div class="graylayer"></div>
+        <p>Hello,</p>
+        <h1 :style="textShadow">I'm Diego</h1>
+        <h1 :style="textShadow">Web Developer</h1>
+        <h4>Also a bass player, karaoke singer and a Seinfeld Fan</h4>
+      </div>
+      <div class="graylayer"></div>
     </div>
     <div class="skillsbox frontcard">
       <h2>Skills</h2>
@@ -40,13 +39,26 @@ export default {
   data() {
     return {
       color: this.color,
+      text1: "",
+      text2: "Software developer/bassplayer/karaoke singer.",
+      text3: "Location: Japan.",
+      text4: "Problem-solving, help people, always up to learn.",
     };
   },
   computed: {
-    bkgroundcolor () {
+    bkgroundcolor() {
       return this.color.value + "card" + " " + "description";
-     }
-  }
+    },
+    textShadow() {
+      if (this.color.value === "red") {
+        return "text-shadow: -5px 5px 10px  #ff1c14cc;"
+      } else if (this.color.value === "blue") {
+        return "text-shadow: -5px 5px 10px  #534094cc;"
+      } else {
+        return "text-shadow: -5px 5px 10px  #4bb020cc;"
+      }
+    }
+  },
 };
 </script>
 
@@ -69,9 +81,27 @@ ul {
   flex-wrap: wrap;
 }
 
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 5rem;
+  transition: all .3s ease-in;
+  cursor: default;
+}
+
+/* h1:hover {
+  text-shadow: -5px 5px 10px rgba(0, 0, 0, 0.582);
+} */
+
 h2 {
   text-align: center;
   margin-bottom: 30px;
+}
+
+h4 {
+  color: #505050;
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-top: 2rem;
 }
 
 h5 {
@@ -107,8 +137,9 @@ li:hover .skillsicon {
 }
 
 p {
-  margin: 2rem;
+  margin-bottom: 2rem;
   font-weight: 700;
+  font-size: 3rem;
 }
 
 .skilltext {
@@ -116,7 +147,6 @@ p {
   transform: translateY(100px);
   transition: 1s;
 }
-
 
 li:hover .skilltext {
   transform: translateY(50px);
@@ -146,7 +176,6 @@ li:hover .skilltext {
 .red {
   /* transition: 0.3s ease-in-out; */
   padding: 1rem;
-  
 }
 
 .green .skillsicon {
@@ -154,11 +183,11 @@ li:hover .skilltext {
 }
 
 .blue .skillsicon {
-  color: rgb(36, 36, 179);
+  color: #534094;
 }
 
 .red .skillsicon {
- color: rgb(190, 60, 60);
+  color: #ff1c14;
 }
 
 .green:hover {
@@ -182,7 +211,11 @@ li:hover .skilltext {
   bottom: 0;
   left: 0;
   opacity: 0.8;
-  background-image: linear-gradient(135deg, rgb(233, 231, 231), rgb(41, 40, 40));
+  /* background-image: linear-gradient(
+    135deg,
+    rgb(233, 231, 231),
+    rgb(41, 40, 40)
+  ); */
   border-radius: 10px;
   z-index: 1;
 }
@@ -193,12 +226,11 @@ li:hover .skilltext {
   height: 100%;
   top: 0;
   right: 0;
-  left: 0;
-  right: 0;
   z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 2rem;
 }
 
 .redcard,
@@ -216,8 +248,6 @@ li:hover .skilltext {
 }
 
 .bluecard {
-  background-color:#534094;
+  background-color: #534094;
 }
-
-
 </style>
