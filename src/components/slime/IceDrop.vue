@@ -1,5 +1,4 @@
 <template>
-flame frozen: {{isFlameFrozen}}
 <transition name="icecube">
   <div v-if="isCubeActive" class="icewrapper" :style="icePosition">
     <div v-if="isFlameFrozen === false" class="outerwrapper">

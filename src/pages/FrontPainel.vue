@@ -1,7 +1,7 @@
 <template>
   <div class="frontpainelwrapper">
-    <div class="frontcard" :class="bkgroundcolor">
-      <div class="descriptiontext" v-if="false">
+    <div class="frontcard frontlogo" :class="bkgroundcolor">
+      <div class="descriptiontext">
       <p>I'm a Front-end Software Developer based in Japan.</p>
       <p>
         I'm passionate about using my problem-solving skills to help people.
@@ -57,7 +57,7 @@ export default {
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  height: 60vh;
+  min-height: 60vh;
   width: 100%;
 }
 
@@ -66,6 +66,7 @@ ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 h2 {
@@ -84,7 +85,7 @@ h5 {
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  width: 100%;
+  width: 30%;
 }
 
 li {
@@ -94,10 +95,11 @@ li {
   width: 100px;
   overflow: hidden;
   margin-top: -10px;
+  margin-bottom: 30px;
 }
 
 li:hover .skillsicon {
-  transform: translateY(80px);
+  transform: translateY(-25px);
 }
 
 .skillsicon {
@@ -111,13 +113,13 @@ p {
 
 .skilltext {
   font-size: bold;
-  transform: translateY(-50px);
+  transform: translateY(100px);
   transition: 1s;
 }
 
 
 li:hover .skilltext {
-  transform: translateY(30px);
+  transform: translateY(50px);
 }
 
 .description {
@@ -126,12 +128,17 @@ li:hover .skilltext {
   transition: 1s;
 }
 
+.frontlogo {
+  width: 65%;
+}
+
 .frontcard {
-  width: 40%;
   min-width: 250px;
+  min-height: 400px;
   height: 100%;
   border-radius: 10px;
   position: relative;
+  margin: 20px auto;
 }
 
 .green,
