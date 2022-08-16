@@ -1,7 +1,8 @@
 <template>
+is it frozen{{isFlameFrozen}}
 <transition name="icecube">
   <div v-if="isCubeActive" class="icewrapper" :style="icePosition">
-    <div v-if="isFlameFrozen === false" class="outerwrapper">
+    <div v-if="this.isFlameFrozen === false" class="outerwrapper">
       <div class="bottomwall cubewall"></div>
       <div class="topwall cubewall"></div>
       <div class="backwall cubewall"></div>
@@ -38,7 +39,7 @@
 
 <script>
 export default {
-  props: ["posX", "posY", "direction", "iceSpell", "isFlameFroze"],
+  props: ["posX", "posY", "direction", "iceSpell", "isFlameFrozen"],
   data() {
     return {
       positionX: 10,
@@ -47,14 +48,14 @@ export default {
       snowPosY: 10,
       isSnowActive: false,
       isCubeActive: false,
-      isWaterActive: false
+      isWaterActive: false,
     };
   },
   methods: {
     updatePosition(numbX, numbY) {
-      this.positionX = 1.5 + numbX + 10 * this.direction;
+      this.positionX = 1.5 + numbX + 12 * this.direction;
       this.positionY = numbY + 4;
-      this.snowPosX = numbX + this.direction*5;
+      this.snowPosX = numbX + this.direction*8;
       this.snowPosY = numbY +2;
       this.$emit('cubeposition', {element: 'ice', iceX: this.positionX, iceY: this.positionY})
     },
