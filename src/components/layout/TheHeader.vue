@@ -11,9 +11,15 @@
         </div>
       </div>
       <div class="btnwrapper">
-        <div class="redselector colorbtn" @click="setColor('red')"></div>
-        <div class="blueselector colorbtn" @click="setColor('blue')"></div>
-        <div class="greenselector colorbtn" @click="setColor('green')"></div>
+        <div class="redselector colorbtn" @click="setColor('red')">
+          <font-awesome-icon icon="fa-solid fa-fire-flame-curved" />
+        </div>
+        <div class="blueselector colorbtn" @click="setColor('blue')">
+          <font-awesome-icon icon="fa-solid fa-snowflake" />
+        </div>
+        <div class="greenselector colorbtn" @click="setColor('green')">
+          <font-awesome-icon icon="fa-solid fa-leaf" />
+        </div>
       </div>
       <ul>
         <base-button link to="/projects"
@@ -127,14 +133,17 @@ h1 {
 }
 
 .colorbtn {
-  width: 20px;
-  height: 20px;
-  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
   transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btnwrapper {
-  width: 80px;
+  width: 120px;
   height: 100%;
   display: flex;
   justify-content: space-around;
