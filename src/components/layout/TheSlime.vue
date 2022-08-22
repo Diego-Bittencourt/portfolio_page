@@ -26,6 +26,7 @@
   ></plant-seed>
   <ice-drop
   :isFlameFrozen="isFlameFrozen"
+  :isPlantFrozen="isPlantFrozen"
   :posX="positionX"
   :posY="positionY"
   :direction="slimeDirection"
@@ -190,7 +191,8 @@ export default {
   },
   computed: {
     isFlameFrozen() {
-      if (Math.abs(this.reactionHandler.flameX - this.reactionHandler.iceX) < 5 &&
+      if (this.reactionHandler.flameX != null && this.reactionHandler.iceX != null &&
+          Math.abs(this.reactionHandler.flameX - this.reactionHandler.iceX) < 5 &&
           Math.abs(this.reactionHandler.flameY - this.reactionHandler.iceY) < 10) {
             return true;
           } else {
@@ -198,7 +200,8 @@ export default {
           }
     },
     isPlantBurn() {
-      if (Math.abs(this.reactionHandler.flameX - this.reactionHandler.plantX) < 5 &&
+      if (this.reactionHandler.flameX != null && this.reactionHandler.plantX != null &&
+          Math.abs(this.reactionHandler.flameX - this.reactionHandler.plantX) < 5 &&
           Math.abs(this.reactionHandler.flameY - this.reactionHandler.plantY) < 5) {
             return true;
           } else {
@@ -206,7 +209,8 @@ export default {
           }
     },
     isPlantFrozen() {
-      if (Math.abs(this.reactionHandler.iceX - this.reactionHandler.plantX) < 5 &&
+      if (this.reactionHandler.iceX != null && this.reactionHandler.plantX != null &&
+          Math.abs(this.reactionHandler.iceX - this.reactionHandler.plantX) < 5 &&
           Math.abs(this.reactionHandler.iceY - this.reactionHandler.plantY) < 10) {
             return true;
           } else {

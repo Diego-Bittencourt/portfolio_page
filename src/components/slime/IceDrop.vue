@@ -1,7 +1,7 @@
 <template>
 <transition name="icecube">
   <div v-if="isCubeActive" class="icewrapper" :style="icePosition">
-    <div v-if="this.isFlameFrozen === false" class="outerwrapper">
+    <div v-if="isIceVisible" class="outerwrapper">
       <div class="bottomwall cubewall"></div>
       <div class="topwall cubewall"></div>
       <div class="backwall cubewall"></div>
@@ -38,7 +38,7 @@
 
 <script>
 export default {
-  props: ["posX", "posY", "direction", "iceSpell", "isFlameFrozen"],
+  props: ["posX", "posY", "direction", "iceSpell", "isFlameFrozen", "isPlantFrozen"],
   data() {
     return {
       positionX: 10,
@@ -76,6 +76,13 @@ export default {
     },
     snowPosition() {
       return "top: " + this.snowPosY + "%; left: " + this.snowPosX + "%; transform: scale(" + this.snowDirection*(-1) + ");";
+    },
+    isIceVisible() {
+      if (this.isFlameFrozen === false && this.isPlantFrozen === false) {
+        return true;
+      } else {
+        return false;
+      }
     }
   },
   watch: {

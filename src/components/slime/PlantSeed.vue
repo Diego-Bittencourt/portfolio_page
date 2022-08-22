@@ -1,4 +1,9 @@
 <template>
+burn: {{this.plantBurn}}
+<br>
+frozen: {{this.isPlantFrozen}}
+<br>
+stem color: {{ stemLeafColor}}
   <div class="plantwrapper" :style="seedPosition">
     <div class="plantoverlayer">
       <transition name="seed">
@@ -42,7 +47,8 @@ export default {
       isSeedActive: false,
       isPlantActive: false,
       isFlowerActive: false,
-      isGroundActive: false
+      isGroundActive: false,
+      plantColor: '#7FF984'
     };
   },
   methods: {
@@ -55,14 +61,23 @@ export default {
       this.$emit("resetSpell");
     },
     castAnimation() {
+      if (this.plantBurn === true) {
+        this.plantColor = "#4F504F";
+      } else if (this.isPlantFrozen === true) {
+        this.plantColor = "#B0FFF7"; 
+      } else {
+        this.plantColor = '#7FF984';
+      }
+
       this.isGroundActive = true;
       this.isSeedActive = true;
       setTimeout(() => (this.isSeedActive = false), 2000);
       setTimeout(() => (this.isPlantActive = true), 3000);
       setTimeout(() => (this.isPlantActive = false), 9000);
-      setTimeout(() => (this.isFlowerActive = true), 5000);
+      setTimeout(() => (this.isFlowerActive = true), 4000);
       setTimeout(() => (this.isFlowerActive = false), 9000);
       setTimeout(() => (this.isGroundActive = false), 9000);
+      setTimeout(() => (this.plantColor = '#7FF984'), 9000);
     },
   },
   computed: {
@@ -70,13 +85,14 @@ export default {
       return "top: " + this.positionY + "%; left: " + this.positionX + "%;";
     },
     stemLeafColor() {
+      // return "background-color: " + this.plantColor + ";";
       if (this.plantBurn === true) {
-        return "background-color: black;"
+        return "background-color: #4F504F;"
       } else if (this.isPlantFrozen === true) {
-        return "background-color: blue;"
+        return "background-color: #B0FFF7;"
       }
       else {
-        return "background-color: green;"
+        return "background-color: #7FF984;"
       }
     }
   },
