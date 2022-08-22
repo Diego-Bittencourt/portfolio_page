@@ -48,6 +48,7 @@ export default {
       isSnowActive: false,
       isCubeActive: false,
       isWaterActive: false,
+      snowDirection: 1
     };
   },
   methods: {
@@ -59,9 +60,10 @@ export default {
       this.$emit('cubeposition', {element: 'ice', iceX: this.positionX, iceY: this.positionY})
     },
     castAnimation() {
+      this.snowDirection = this.direction;
       this.isSnowActive = true;
-      setTimeout(() => this.isSnowActive = false, 3000)
-      setTimeout(() => this.isCubeActive = true, 1000);
+      setTimeout(() => this.isSnowActive = false, 2000)
+      setTimeout(() => this.isCubeActive = true, 500);
       setTimeout(() => this.isCubeActive = false, 8000);
     },
     resetSpell() {
@@ -73,7 +75,7 @@ export default {
       return "top: " + this.positionY + "%; left: " + this.positionX + "%;";
     },
     snowPosition() {
-      return "top: " + this.snowPosY + "%; left: " + this.snowPosX + "%; transform: scale(" + this.direction*(-1) + ");";
+      return "top: " + this.snowPosY + "%; left: " + this.snowPosX + "%; transform: scale(" + this.snowDirection*(-1) + ");";
     }
   },
   watch: {
@@ -96,7 +98,7 @@ export default {
   width: 5px;
   border-radius: 50%;
   position: absolute;
-  animation: snowfall 3s infinite ease-in-out;
+  animation: snowfall 2s infinite ease-in-out;
   z-index: 5;
 }
 
