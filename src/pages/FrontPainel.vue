@@ -95,6 +95,7 @@ h1 {
 h2 {
   text-align: center;
   margin-bottom: 30px;
+  font-size: 3.5rem;
 }
 
 h4 {
