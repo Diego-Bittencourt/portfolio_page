@@ -1,6 +1,6 @@
 <template>
-  <the-header @set-color="setColor"></the-header>
-  <the-slime></the-slime>
+  <the-header @set-color="setColor" @toggleSlimeVisibility="slimeVisibility"></the-header>
+  <the-slime :slimevisibility="this.isSlimeVisible"></the-slime>
   <section>
     <router-view v-slot="slotProps">
       <transition name="route" mode="out-in">
@@ -28,7 +28,8 @@ export default {
   },
   data () {
     return {
-      themeColor: "green"
+      themeColor: "green",
+      isSlimeVisible: false
     }
   },
   provide () {
@@ -43,6 +44,10 @@ export default {
       } else {
         this.themeColor = "green";
       }
+    },
+    slimeVisibility(payload) {
+      this.isSlimeVisible = payload;
+      console.log("o payload é ", payload)
     }
   }
 

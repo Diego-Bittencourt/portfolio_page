@@ -11,6 +11,12 @@
         </div>
       </div>
       <div class="btnwrapper">
+        <div class="slimeselector colorbtn" :style="slimeButton" @click="toggleSlime">
+          <div class="eyeswrapper" v-if="!isSlimeVisible">
+            <div class="left eye"></div>
+            <div class="right eye"></div>
+          </div>
+        </div>
         <div class="redselector colorbtn" @click="setColor('red')">
           <font-awesome-icon icon="fa-solid fa-fire-flame-curved" />
         </div>
@@ -35,9 +41,11 @@
 
 <script>
 export default {
+  emits:["toggleSlimeVisibility"],
   data() {
     return {
       themeColor: "",
+      isSlimeVisible: false
     };
   },
   methods: {
@@ -47,8 +55,25 @@ export default {
     },
     backToTop() {
       this.$router.push("/");
+    },
+    toggleSlime() {
+      this.isSlimeVisible = !this.isSlimeVisible;
+      this.$emit("toggleSlimeVisibility", this.isSlimeVisible);
     }
   },
+  computed: {
+    slimeButton() {
+      if (this.isSlimeVisible === true) {
+        return "background-color: transparent;";
+      } else if(this.themeColor === "blue" && this.isSlimeVisible === false) {
+        return "background-color: #71c7f0aa;";
+      } else if (this.themeColor === "red"  && this.isSlimeVisible === false) {
+        return "background-color: #ff1c14aa;";
+      } else {
+        return "background-color: #39DE18aa;";
+      }
+    }
+  }
 };
 </script>
 
@@ -140,10 +165,11 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid #d6d6d6;
 }
 
 .btnwrapper {
-  width: 120px;
+  width: 160px;
   height: 100%;
   display: flex;
   justify-content: space-around;
@@ -153,19 +179,16 @@ h1 {
 
 .blueselector {
   background-color: #534094;
-  border: 2px solid #d6d6d6;
   transition: 0.5s;
 }
 
 .greenselector {
   background-color: #4d9c5b;
-  border: 2px solid #d6d6d6;
   transition: 0.5s;
 }
 
 .redselector {
   background-color: #ff1c14;
-  border: 2px solid #d6d6d6;
   transition: 0.5s;
 }
 
@@ -179,5 +202,56 @@ h1 {
 
 .redselector:hover {
   box-shadow: 0 0 10px 10px #ff1c14;
+}
+
+.slimeselector {
+  position: relative;
+}
+
+.eye {
+  background-color: black;
+  width: 3px;
+  height: 100%;
+  border-radius: 30px;
+  border: 1px solid black;
+  transition: 1s;
+}
+
+.eyeswrapper {
+  overflow: hidden;
+  animation: blink 4s linear infinite;
+  height: 5px;
+  width: 50%;
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  display: flex;
+  justify-content: space-around;
+}
+
+@keyframes blink {
+  0% {
+    transform: scaleY(1);
+  }
+
+  25% {
+    transform: scaleY(1);
+  }
+
+  30% {
+    transform: scaleY(0.2);
+  }
+
+  35% {
+    transform: scaleY(0.2);
+  }
+
+  40% {
+    transform: scaleY(1);
+  }
+
+  100% {
+    transform: scaleY(1);
+  }
 }
 </style>

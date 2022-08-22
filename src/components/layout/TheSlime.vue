@@ -34,7 +34,7 @@
   @resetSpell="resetSpell('ice')"
   @cubeposition="handleReaction"
   ></ice-drop>
-  <div class="slimewrapper" :style="moveSlime">
+  <div class="slimewrapper" :style="moveSlime" @click="castSpell" v-if="this.slimevisibility">
     <div class="slimeoutlayer" :style="slimeFloat">
       <div class="slimesublayer">
         <div class="slimeinnerlayer" :class="color">
@@ -64,6 +64,7 @@ export default {
     PlantSeed,
     IceDrop
   },
+  props: ["slimevisibility"],
   inject: ["color"],
   data() {
     return {
@@ -261,7 +262,7 @@ export default {
   left: 50%;
   top: 50%;
   z-index: 5;
-  transition: 0.1s;
+  transition: all 0.1s;
 }
 
 .slimefloorlayer {
@@ -342,7 +343,7 @@ export default {
 }
 
 .green {
-  background-color: green;
+  background-color: #39DE18;
 }
 
 .red {

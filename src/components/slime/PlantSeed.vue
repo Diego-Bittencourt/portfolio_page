@@ -1,9 +1,4 @@
 <template>
-burn: {{this.plantBurn}}
-<br>
-frozen: {{this.isPlantFrozen}}
-<br>
-stem color: {{ stemLeafColor}}
   <div class="plantwrapper" :style="seedPosition">
     <div class="plantoverlayer">
       <transition name="seed">
