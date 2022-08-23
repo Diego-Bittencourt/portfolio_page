@@ -85,6 +85,7 @@ form {
     margin: 2rem;
     padding: 1rem;
     height: 60vh;
+    min-height: 340px;
 }
 
 h1 {

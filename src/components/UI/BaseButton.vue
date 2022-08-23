@@ -110,5 +110,17 @@ a:hover {
   transition: all 0.3s ease-in; 
 }
 
+@media screen and (max-width: 500px){
+  a, 
+  button {
+    padding: 0.5rem;
+  }
+}
 
+@media screen and (max-width: 380px){
+  a, 
+  button {
+    padding: 0.2rem;
+  }
+}
 </style>

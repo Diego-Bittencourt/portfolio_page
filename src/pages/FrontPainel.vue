@@ -69,7 +69,7 @@ export default {
   align-items: center;
   justify-content: space-around;
   flex-wrap: wrap;
-  min-height: 60vh;
+  min-height: 70vh;
   width: 100%;
 }
 
@@ -117,6 +117,7 @@ h5 {
   align-items: center;
   flex-direction: column;
   width: 30%;
+  min-width: 220px;
 }
 
 li {
@@ -161,10 +162,10 @@ li:hover .skilltext {
 
 .frontlogo {
   width: 65%;
+  min-width: 450px;
 }
 
 .frontcard {
-  min-width: 250px;
   min-height: 400px;
   height: 100%;
   border-radius: 10px;
@@ -250,5 +251,24 @@ li:hover .skilltext {
 
 .bluecard {
   background-color: #534094;
+}
+
+@media screen and (max-width: 520px) { 
+  h1 {
+    font-size: 3.5rem;
+    
+  }
+
+  p {
+    font-size: 2.5rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  .frontlogo {
+    min-width: 300px;
+  }
 }
 </style>

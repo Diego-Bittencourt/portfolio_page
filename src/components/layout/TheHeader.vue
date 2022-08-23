@@ -11,7 +11,11 @@
         </div>
       </div>
       <div class="btnwrapper">
-        <div class="slimeselector colorbtn" :style="slimeButton" @click="toggleSlime">
+        <div
+          class="slimeselector colorbtn"
+          :style="slimeButton"
+          @click="toggleSlime"
+        >
           <div class="eyeswrapper" v-if="!isSlimeVisible">
             <div class="left eye"></div>
             <div class="right eye"></div>
@@ -41,11 +45,11 @@
 
 <script>
 export default {
-  emits:["toggleSlimeVisibility"],
+  emits: ["toggleSlimeVisibility"],
   data() {
     return {
       themeColor: "",
-      isSlimeVisible: false
+      isSlimeVisible: false,
     };
   },
   methods: {
@@ -59,21 +63,21 @@ export default {
     toggleSlime() {
       this.isSlimeVisible = !this.isSlimeVisible;
       this.$emit("toggleSlimeVisibility", this.isSlimeVisible);
-    }
+    },
   },
   computed: {
     slimeButton() {
       if (this.isSlimeVisible === true) {
         return "background-color: transparent;";
-      } else if(this.themeColor === "blue" && this.isSlimeVisible === false) {
+      } else if (this.themeColor === "blue" && this.isSlimeVisible === false) {
         return "background-color: #71c7f0aa;";
-      } else if (this.themeColor === "red"  && this.isSlimeVisible === false) {
+      } else if (this.themeColor === "red" && this.isSlimeVisible === false) {
         return "background-color: #ff1c14aa;";
       } else {
         return "background-color: #39DE18aa;";
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -83,6 +87,7 @@ header {
   justify-content: center;
   align-content: center;
   height: 10vh;
+  min-height: 55px;
   width: 100%;
   background-color: #494848;
   font-size: inherit;
@@ -147,7 +152,6 @@ h1 {
 .switchlink {
   position: relative;
 }
-
 
 .backtop {
   position: absolute;
@@ -252,6 +256,63 @@ h1 {
 
   100% {
     transform: scaleY(1);
+  }
+}
+
+@media screen and (max-width: 860px) {
+  .switchlink {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  header {
+    min-height: 35px;
+  }
+
+  header nav {
+    flex-wrap: wrap;
+    gap: 10px;
+    height: 7vh;
+    margin-top: 10px;
+  }
+
+  ul {
+    justify-self: center;
+  }
+
+  ul h1 {
+    font-size: 1rem;
+  }
+
+  a {
+    padding: 0.2rem;
+  }
+
+  .colorbtn {
+    width: 20px;
+    height: 20px;
+  }
+
+  .blueselector:hover {
+    box-shadow: 0 0 3px 3px #534094;
+  }
+
+  .greenselector:hover {
+    box-shadow: 0 0 3px 3px #4d9c5b;
+  }
+
+  .redselector:hover {
+    box-shadow: 0 0 3px 3px #ff1c14;
+  }
+
+  .btnwrapper {
+    gap: 0px;
+    width: 100px;
+  }
+
+  svg {
+    font-size: 1rem;
   }
 }
 </style>

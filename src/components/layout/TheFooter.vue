@@ -29,6 +29,7 @@
 footer {
     width: 100%;
     height: 10vh;
+    min-height: 60px;
     display: flex;
     justify-content: center;
     padding: 0 3rem;
@@ -62,5 +63,12 @@ h4 {
     width: 30%;
     height: 100%;
     border: 1px solid red;
+}
+
+@media screen and (max-width: 420px) {
+  h4,
+  h2 {
+    font-size: 1rem;
+  }
 }
 </style>

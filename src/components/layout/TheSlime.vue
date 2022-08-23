@@ -457,4 +457,12 @@ export default {
   background-color: rgba(48, 48, 48, 0.644);
   border-radius: 100%;
 }
+
+@media screen and (max-width: 480px) {
+  .slimewrapper {
+    width: 70px;
+    height: 45px;
+
+  }
+}
 </style>

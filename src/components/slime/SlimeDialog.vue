@@ -183,4 +183,10 @@ p {
 .dialog-leave-active {
   transition: 0.4s all ease-out;
 }
+
+@media screen and (max-width: 520px) {
+  p {
+    font-size: 1rem;
+  }
+}
 </style>

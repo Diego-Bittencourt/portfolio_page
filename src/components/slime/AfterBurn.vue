@@ -250,31 +250,6 @@ export default {
   bottom: 0;
 }
 
-.fireball {
-  position: absolute;
-  border-radius: 50%;
-  height: 20px;
-  width: 20px;
-  background: radial-gradient(
-      circle at 50% 0,
-      rgba(255, 0, 0, 0.5),
-      rgba(208, 255, 0, 0) 70.71%
-    ),
-    radial-gradient(
-      circle at 6.7% 75%,
-      rgba(255, 0, 255, 0.5),
-      rgba(255, 0, 85, 0) 70.71%
-    ),
-    radial-gradient(
-        circle at 93.3% 75%,
-        rgba(255, 94, 0, 0.5),
-        rgba(255, 0, 0, 0.568) 70.71%
-      )
-      beige;
-  border: 1px solid black;
-  z-index: 5;
-}
-
 .burnwrap {
   width: 5%;
   height: 2%;
@@ -367,5 +342,13 @@ export default {
   left: 20%;
   top: -50%;
   transform: rotate(-30deg);
+}
+
+@media screen and (max-width: 480px) {
+  .flamewrapper {
+    width: 35px;
+    height: 35px;
+
+  }
 }
 </style>
