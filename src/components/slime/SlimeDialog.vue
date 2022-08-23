@@ -19,6 +19,7 @@ export default {
     return {
       color: this.color,
       slimePhrase: "",
+      instructions: "Use W, S, D, and A to walk. To cast a spell, just hit spacebar or click on me!",
       coolDownPhrase: {
         red: "I need to recharge my fire.",
         green: "Let's save energy for later.",

@@ -34,6 +34,7 @@
   @resetSpell="resetSpell('ice')"
   @cubeposition="handleReaction"
   ></ice-drop>
+  <Transition name="slimetransition">
   <div class="slimewrapper" :style="moveSlime" @click="castSpell" v-if="this.slimevisibility">
     <div class="slimeoutlayer" :style="slimeFloat">
       <div class="slimesublayer">
@@ -49,6 +50,7 @@
       </div>
     </div>
   </div>
+  </Transition>
 </template>
 
 <script>
@@ -155,6 +157,9 @@ export default {
       }
     },
     handleKeyPress(e) {
+      if (!this.slimevisibility) {
+        return
+      }
       const keyCode = String(e.keyCode || e.code || e.keyIdentifier);
       if (keyCode === "119" && this.positionY > 0) {
         this.positionY = this.positionY - 0.5;
@@ -255,6 +260,31 @@ export default {
 </script>
 
 <style scoped>
+
+.slimetransition-enter-from,
+.slimetransition-leave-to {
+  /* top: 0%;
+  left: 45%; */
+  /* opacity: 0;
+  transform: translateY(-30px); */
+  transform: scale(0.1);
+}
+
+.slimetransition-enter-to,
+.slimetransition-leave-from {
+  /* top: 45%;
+  left: 45%; */
+  /* opacity: 1;
+  transform: translateY(0); */
+  transform: scale(1);
+}
+
+.slimetransition-enter-active,
+.slimetransition-leave-active {
+  transition: all 1s ease-in;
+}
+
+
 .slimewrapper {
   position: absolute;
   width: 100px;
