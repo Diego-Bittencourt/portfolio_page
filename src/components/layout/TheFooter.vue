@@ -53,6 +53,7 @@ li {
 
 h2 {
     text-align: center;
+    font-size: 2rem;
 }
 
 h4 {
