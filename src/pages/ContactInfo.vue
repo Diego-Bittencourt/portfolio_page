@@ -1,6 +1,6 @@
 <template>
   <base-card>
-    <form @submit.prevent="sendMessage">
+    <form @submit.prevent="validateForm">
       <h1>Send me a message:</h1>
       <div class="formcontrol">
         <label ref="name">Your name:</label>
@@ -46,7 +46,7 @@ export default {
     validateMessage () {
         this.isMessageInvalid = false;
     },
-    sendMessage() {
+    validateForm() {
         this.isFormInvalid = false;
         if (this.userName === "") {
             this.isNameInvalid = true;
@@ -74,8 +74,29 @@ export default {
         }
 
         this.$router.push("/");
-        console.log(userData);
+        this.sendMessage(userData);
     },
+    async sendMessage(data) {
+        const newMessage = {
+            userName: data.userName,
+            userEmail: data.userEmail,
+            userMessage: data.userMessage
+        };
+
+        const response = await fetch(
+            `https://diego-bittencourt-default-rtdb.asia-southeast1.firebasedatabase.app/messages.json`, {
+            method: 'POST',
+            body: JSON.stringify(newMessage),
+             }
+        );
+
+        const responseData = await response.json();
+
+        if (!responseData.ok) {
+            const error = new Error(responseData.message || 'Failed to send request');
+            throw error;
+        }
+    }
   },
 };
 </script>
