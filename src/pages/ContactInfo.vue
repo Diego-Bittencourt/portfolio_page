@@ -1,7 +1,5 @@
 <template>
 <div class="outwrapper">
-  {{typeof this.color}}
-  {{typeof this.color.value}}
   <div v-if="isLoading && !msgSent" class="loadwrapper">
     <base-loading></base-loading>
   </div>
