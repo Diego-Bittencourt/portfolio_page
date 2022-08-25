@@ -1,12 +1,14 @@
 <template>
 <div class="outwrapper">
+  {{typeof this.color}}
+  {{typeof this.color.value}}
   <div v-if="isLoading && !msgSent" class="loadwrapper">
     <base-loading></base-loading>
   </div>
     <base-card  v-if="msgSent && !isLoading">
   <div class="msgwrapper">
       <h2>Thank you for your message!</h2>
-      <hr />
+      <hr :style="countbar"/>
   </div>
     </base-card>
   <base-card v-if="!isLoading && !msgSent">
@@ -57,6 +59,7 @@
 
 <script>
 export default {
+    inject: ['color'],
   data() {
     return {
       isLoading: false,
@@ -71,7 +74,7 @@ export default {
     };
   },
   mounted() {
-    
+           this.isLoading = false;
         this.msgSent = false;
   },
   methods: {
@@ -148,10 +151,42 @@ export default {
         
     }
   },
+  computed: {
+    countbar() {
+        if (this.color.value === "blue") {
+        return "background-color: #71c7f0aa;";
+      } else if (this.color.value === "red") {
+        return "background-color: #ff1c14aa;";
+      } else {
+        return "background-color: #39DE18aa;";
+      }
+    }
+  }
 };
 </script>
 
 <style scoped>
+hr {
+    border: 0px solid;
+    border-radius: 30px;
+    margin-top: 10px;
+    animation: 3.4s countbar linear;
+    transition: background-color 0.5s;
+    height: 10px;
+}
+
+@keyframes countbar {
+0% {
+    width: 100%;
+}
+90% {
+  width: 0%;
+}
+100% {
+    width: 0%;
+}
+}
+
 .outwrapper {
     margin: auto;
 }
