@@ -181,7 +181,7 @@ li:hover .skilltext {
 }
 
 .green .skillsicon {
-  color: #4d9c5b;
+  color: #2d6d39;
 }
 
 .blue .skillsicon {
@@ -193,15 +193,15 @@ li:hover .skilltext {
 }
 
 .green:hover {
-  text-shadow: 0 8px 10px #4d9c5b;
+  text-shadow: 0 6px 8px #2d6d39;
 }
 
 .red:hover {
-  text-shadow: 0 8px 10px rgb(190, 60, 60);
+  text-shadow: 0 6px 8px rgb(190, 60, 60);
 }
 
 .blue:hover {
-  text-shadow: 0 8px 10px rgb(36, 36, 179);
+  text-shadow: 0 6px 8px rgb(36, 36, 179);
 }
 
 .graylayer {
