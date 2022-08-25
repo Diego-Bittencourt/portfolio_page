@@ -4,6 +4,7 @@ import router from './router/index.js';
 
 import BaseButton from './components/UI/BaseButton.vue';
 import BaseCard from './components/UI/BaseCard.vue';
+import BaseLoading from './components/UI/BaseLoading.vue';
 
 // /* import the fontawesome core */
 import  { library }  from '@fortawesome/fontawesome-svg-core'
@@ -28,5 +29,6 @@ app.use(router);
 
 app.component('base-button', BaseButton);
 app.component('base-card', BaseCard);
+app.component('base-loading', BaseLoading);
 
 app.mount('#app');
