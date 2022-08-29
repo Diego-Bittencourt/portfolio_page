@@ -1,44 +1,50 @@
 <template>
-<transition name="icecube">
-  <div v-if="isCubeActive" class="icewrapper" :style="icePosition">
-    <div v-if="isIceVisible" class="outerwrapper">
-      <div class="bottomwall cubewall"></div>
-      <div class="topwall cubewall"></div>
-      <div class="backwall cubewall"></div>
-      <div class="rightwall cubewall"></div>
-      <div class="leftwall cubewall"></div>
-      <div class="frontwall cubewall"></div>
+  <transition name="icecube">
+    <div v-if="isCubeActive" class="icewrapper" :style="icePosition">
+      <div v-if="isIceVisible" class="outerwrapper">
+        <div class="bottomwall cubewall"></div>
+        <div class="topwall cubewall"></div>
+        <div class="backwall cubewall"></div>
+        <div class="rightwall cubewall"></div>
+        <div class="leftwall cubewall"></div>
+        <div class="frontwall cubewall"></div>
+      </div>
     </div>
-  </div>
-</transition>
-<div v-if="isSnowActive" class="snowwrapper" :style="snowPosition">
-  <div class="snow sn1"></div>
-  <div class="snow sn2"></div>
-  <div class="snow sn3"></div>
-  <div class="snow sn4"></div>
-  <div class="snow sn5"></div>
-  <div class="snow sn6"></div>
-  <div class="snow sn7"></div>
-  <div class="snow sn8"></div>
-  <div class="snow sn9"></div>
-  <div class="snow sn10"></div>
-  <div class="snow sn11"></div>
-  <div class="snow sn12"></div>
-  <div class="snow sn13"></div>
-  <div class="snow sn14"></div>
-  <div class="snow sn15"></div>
-  <div class="snow sn16"></div>
-  <div class="snow sn17"></div>
-  <div class="snow sn18"></div>
-  <div class="snow sn19"></div>
-  <div class="snow sn20"></div>
-
+  </transition>
+  <div v-if="isSnowActive" class="snowwrapper" :style="snowPosition">
+    <div class="snow sn1"></div>
+    <div class="snow sn2"></div>
+    <div class="snow sn3"></div>
+    <div class="snow sn4"></div>
+    <div class="snow sn5"></div>
+    <div class="snow sn6"></div>
+    <div class="snow sn7"></div>
+    <div class="snow sn8"></div>
+    <div class="snow sn9"></div>
+    <div class="snow sn10"></div>
+    <div class="snow sn11"></div>
+    <div class="snow sn12"></div>
+    <div class="snow sn13"></div>
+    <div class="snow sn14"></div>
+    <div class="snow sn15"></div>
+    <div class="snow sn16"></div>
+    <div class="snow sn17"></div>
+    <div class="snow sn18"></div>
+    <div class="snow sn19"></div>
+    <div class="snow sn20"></div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["posX", "posY", "direction", "iceSpell", "isFlameFrozen", "isPlantFrozen"],
+  props: [
+    "posX",
+    "posY",
+    "direction",
+    "iceSpell",
+    "isFlameFrozen",
+    "isPlantFrozen",
+  ],
   data() {
     return {
       positionX: 10,
@@ -48,23 +54,27 @@ export default {
       isSnowActive: false,
       isCubeActive: false,
       isWaterActive: false,
-      snowDirection: 1
+      snowDirection: 1,
     };
   },
   methods: {
     updatePosition(numbX, numbY) {
       this.positionX = 1.5 + numbX + 12 * this.direction;
       this.positionY = numbY + 4;
-      this.snowPosX = numbX + this.direction*7;
-      this.snowPosY = numbY +2;
-      this.$emit('cubeposition', {element: 'ice', iceX: this.positionX, iceY: this.positionY})
+      this.snowPosX = numbX + this.direction * 8;
+      this.snowPosY = numbY + 2;
+      this.$emit("cubeposition", {
+        element: "ice",
+        iceX: this.positionX,
+        iceY: this.positionY,
+      });
     },
     castAnimation() {
       this.snowDirection = this.direction;
       this.isSnowActive = true;
-      setTimeout(() => this.isSnowActive = false, 2000)
-      setTimeout(() => this.isCubeActive = true, 500);
-      setTimeout(() => this.isCubeActive = false, 8000);
+      setTimeout(() => (this.isSnowActive = false), 2000);
+      setTimeout(() => (this.isCubeActive = true), 500);
+      setTimeout(() => (this.isCubeActive = false), 8000);
     },
     resetSpell() {
       this.$emit("resetSpell");
@@ -75,20 +85,23 @@ export default {
       return "top: " + this.positionY + "%; left: " + this.positionX + "%;";
     },
     snowPosition() {
-      return "top: " + this.snowPosY + "%; left: " + this.snowPosX + "%; transform: scale(" + this.snowDirection*(-1) + ");";
-    },
+        return "top: " + this.snowPosY + 
+        "%; left: calc(" + this.snowDirection*30 + "px + " + this.snowPosX + 
+        "%); transform: scale(" + this.snowDirection*(-1) + 
+        ");";
+      },
     isIceVisible() {
       if (this.isFlameFrozen === false && this.isPlantFrozen === false) {
         return true;
       } else {
         return false;
       }
-    }
+    },
   },
   watch: {
     iceSpell(val) {
       if (val === false) {
-        return
+        return;
       }
       this.updatePosition(this.posX, this.posY);
       this.castAnimation();
@@ -112,7 +125,6 @@ export default {
 @keyframes snowfall {
   from {
     transform: translateX(0);
-    
   }
 
   to {
@@ -222,7 +234,8 @@ export default {
 
 .snowwrapper {
   height: 40px;
-  width: 100px;
+  width: calc(100vw * 0.1);
+  max-width: 100px;
   position: absolute;
   overflow: clip;
   z-index: 5;
@@ -266,7 +279,7 @@ export default {
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  transform: rotateX(240deg)  rotateY(-5deg) rotateZ(-155deg);
+  transform: rotateX(240deg) rotateY(-5deg) rotateZ(-155deg);
 }
 
 .cubewall {
@@ -303,5 +316,34 @@ export default {
   transform: translateZ(-48px);
 }
 
+@media screen and (max-width: 480px) {
+  .icewrapper {
+    height: 30px;
+    width: 30px;
+  }
 
+  .frontwall {
+    transform: rotateX(90deg);
+    transform-origin: bottom;
+  }
+
+  .backwall {
+    transform: rotateX(90deg) translateZ(28px);
+    transform-origin: bottom;
+  }
+
+  .leftwall {
+    transform: rotateY(-90deg);
+    transform-origin: right;
+  }
+
+  .rightwall {
+    transform: rotateY(90deg);
+    transform-origin: left;
+  }
+
+  .topwall {
+    transform: translateZ(-28px);
+  }
+}
 </style>
