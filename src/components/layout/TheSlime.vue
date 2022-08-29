@@ -1,4 +1,11 @@
 <template>
+<div class="slimecntr" v-if="this.slimevisibility">
+  <div class="cntrbtn btnup" :class="color" @click="handleKeyPress({code: 119})"><font-awesome-icon icon="fa-solid fa-circle-arrow-up" /></div>
+  <div class="cntrbtn btndown" :class="color" @click="handleKeyPress({code: 115})"><font-awesome-icon icon="fa-solid fa-circle-arrow-down" /></div>
+  <div class="cntrbtn btnleft" :class="color" @click="handleKeyPress({code: 97})"><font-awesome-icon icon="fa-solid fa-circle-arrow-left" /></div>
+  <div class="cntrbtn btnright" :class="color" @click="handleKeyPress({code: 100})"><font-awesome-icon icon="fa-solid fa-circle-arrow-right" /></div>
+
+</div>
 <slime-dialog 
     :isCoolDown="isCoolDown"
     :posX="positionX"
@@ -93,9 +100,9 @@ export default {
   },
   mounted() {
     //adding a Vanilla JS event listener to the window.
-    window.addEventListener("keypress", this.handleKeyPress);
-    window.addEventListener("keydown", this.fastFloatTime);
-    window.addEventListener("keyup", this.slowFloatTime);
+    document.addEventListener("keypress", this.handleKeyPress);
+    document.addEventListener("keydown", this.fastFloatTime);
+    document.addEventListener("keyup", this.slowFloatTime);
   },
   methods: {
     handleReaction(payload) {
@@ -260,6 +267,51 @@ export default {
 </script>
 
 <style scoped>
+.slimecntr {
+  float: left;
+  position: sticky;
+  top: 80vh;
+  left: 20px;
+  border-radius: 50%;
+  background-color: rgb(58, 58, 58);
+  width: 70px;
+  height: 70px;
+  padding: 10px 0;
+  z-index: 10;
+}
+
+.cntrbtn {
+  position: absolute;
+  color: #ddd;
+  transition: 1s;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  padding-left: 2px;
+  padding-top: 1px;
+}
+
+
+
+.btnup {
+  top: 2px;
+  left: 40%;
+}
+
+.btndown {
+  bottom: 2px;
+  left: 40%;
+}
+
+.btnleft {
+  top: 35%;
+  left: 2px;
+}
+
+.btnright {
+  top: 35%;
+  right: 2px;
+}
 
 .slimetransition-enter-from,
 .slimetransition-leave-to {
@@ -463,6 +515,12 @@ export default {
     width: 70px;
     height: 45px;
 
+  }
+}
+
+@media screen and (min-width: 460px) {
+  .slimecntr {
+    display: none;
   }
 }
 </style>

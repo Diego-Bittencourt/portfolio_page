@@ -189,7 +189,7 @@ li:hover .skilltext {
 }
 
 .red .skillsicon {
-  color: #ff1c14;
+  color: #cf110a;
 }
 
 .green:hover {
