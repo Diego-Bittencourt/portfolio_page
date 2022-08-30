@@ -82,11 +82,12 @@ export default {
   },
   computed: {
     icePosition() {
-      return "top: " + this.positionY + "%; left: " + this.positionX + "%;";
+      return "top: " + this.positionY + 
+      "%; left: calc(" + this.snowDirection*40 + "px + " + this.positionX + "%;";
     },
     snowPosition() {
         return "top: " + this.snowPosY + 
-        "%; left: calc(" + this.snowDirection*30 + "px + " + this.snowPosX + 
+        "%; left: calc(" + this.snowDirection*20 + "px + " + this.snowPosX + 
         "%); transform: scale(" + this.snowDirection*(-1) + 
         ");";
       },
