@@ -15,9 +15,11 @@
         </base-button>
       </li>
       <li>
-        <base-button outlink>
+        <base-button outlink receivedlink="resume.pdf">
           <font-awesome-icon icon="fa-solid fa-file-arrow-down" />
+          <!-- <a style="text-decoration=none; color='black'" href="resume.pdf" download> -->
           <h4>Resume</h4>
+          <!-- </a> -->
         </base-button>
       </li>
     </ul>
